@@ -10,7 +10,7 @@ public class Client implements BaseEntity {
     @SequenceGenerator(sequenceName = "client_seq", name="client_seq_id", initialValue = 20, allocationSize = 10)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_seq_id")
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -18,11 +18,11 @@ public class Client implements BaseEntity {
     @Column(name = "mobile_no")
     private String mobileNo;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

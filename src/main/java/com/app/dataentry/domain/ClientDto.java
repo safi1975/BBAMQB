@@ -5,15 +5,15 @@ import com.app.dataentry.model.Client;
 
 public class ClientDto implements BaseDto<Client> {
 
-    private Integer id;
+    private Long id;
 	private String name;
     private String mobileNo;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

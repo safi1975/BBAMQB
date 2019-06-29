@@ -4,9 +4,6 @@
 <head th:replace="fragments/header :: header">
 </head>
 <body>
-<main>
-    <nav th:replace="fragments/navigation :: nav(1)">
-    </nav>
     <div class="container-fluid mt-2">
         <div class="card">
             <div class="card-header">
@@ -17,7 +14,7 @@
             </div>
             <div class="dataTables_wrapper dt-bootstrap4">
                 <div class="col-sm-12">
-                    <table id="dt-client" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="dt-client" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th class="th-sm">Name
@@ -32,16 +29,10 @@
                         <th:block th:each="client : ${clients}">
                             <tr>
                                 <td th:text="${client.name}">Name</td>
-                                <td th:text="${client.phone}">Mobile No</td>
+                                <td th:text="${client.mobileNo}">Mobile No</td>
                                 <td>
-                                    <a id="footer-link-view" th:href="@{'/client/view/' + ${client.id}}">
-                                        <i class="fa fa-eye mr-4"> </i>
-                                    </a>
                                     <a id="footer-link-edit" th:href="@{'/client/edit/' + ${client.id}}">
                                         <i class="fa fa-pencil mr-4"> </i>
-                                    </a>
-                                    <a id="footer-link-delete" th:href="@{'/client/delete/' + ${client.id}}">
-                                        <i class="fa fa-trash mr-4"> </i>
                                     </a>
                                 </td>
                             </tr>
@@ -52,8 +43,7 @@
             </div>
         </div>
     </div>
-</main>
-<footer th:replace="fragments/footer :: footer"></footer>
+<footer th:replace="fragments/footer :: footer_scripts_only"></footer>
 <script th:inline="javascript">
     $(document).ready(function () {
         $('#dt-client').dataTable();
