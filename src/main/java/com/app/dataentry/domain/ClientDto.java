@@ -1,4 +1,4 @@
-package pl.nextwire.cmadmin.domain;
+package com.app.dataentry.domain;
 
 import org.springframework.util.StringUtils;
 import com.app.dataentry.model.Client;
