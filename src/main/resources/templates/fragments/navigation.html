@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<footer th:fragment="footer" class="page-footer unique-color-dark mt-4">
+    <div class="info-color-dark text-center py-4">
+    <a id="footer-link-contact" class="border rounded p-2 px-3 mr-4 d-none d-md-inline-block" href="mailto:adam@example.com">
+        <span>Contact</span>
+        <i class="fa fa-envelope white-text ml-2"> </i>
+
+    </a>
+    <a rel="nofollow" target="_blank" id="footer-link-github" href="https://github.com/Dungal">
+        <i class="fa fa-github white-text mr-4"> </i>
+    </a>
+    </div>
+    <div class="footer-copyright py-3 text-center">
+        Created on
+        <a href="https://www.facebook.com/events/497882590705816/">
+            <strong>Hackathon #code4schenker vol.2</strong>
+        </a>
+    </div>
+</footer>
+
+<nav th:fragment="nav(activeNavItem)" class="navbar navbar-expand-lg navbar-dark primary-color">
+    <img src="/logo.jpg" alt="Nextwire"/>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navBar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" th:classappend="${activeNavItem==0?'active':''}">
+                <a class="nav-link" th:href="${activeNavItem==0?'#':'/'}">Home</a>
+            </li>
+            <li class="nav-item" th:classappend="${activeNavItem==1?'active':''}">
+                <a class="nav-link" th:href="${activeNavItem==1?'#':'/client'}">Clients</a>
+            </li>
+            <li class="nav-item" th:classappend="${activeNavItem==2?'active':''}">
+                <a class="nav-link" th:href="${activeNavItem==2?'#':'/server'}">Servers</a>
+            </li>
+            <li class="nav-item" th:classappend="${activeNavItem==3?'active':''}">
+                <a class="nav-link" th:href="${activeNavItem==3?'#':'/router'}">Routers</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</html>

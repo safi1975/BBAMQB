@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+</head>
+<body>
+<main>
+    <nav th:replace="fragments/navigation :: nav(1)">
+    </nav>
+    <div class="container-fluid mt-2">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Client Form</h3>
+            </div>
+            <div class="card-body">
+                <form action="#" th:action="@{/client}" th:object="${client}" method="post">
+                    <fieldset th:readonly="true">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="md-form form-lg">
+                                    <input type="text" th:field="*{name}" class="form-control form-control-lg">
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="md-form form-lg">
+                                    <input type="text" th:field="*{fullName}" class="form-control form-control-lg">
+                                    <label for="fullName">Full Name</label>
+                                </div>
+                                <div class="md-form form-lg">
+                                    <input type="text" th:field="*{phone}" class="form-control form-control-lg">
+                                    <label for="phone">Contact Phone</label>
+                                </div>
+                                <div class="md-form form-lg">
+                                    <input type="text" th:field="*{email}" class="form-control form-control-lg">
+                                    <label for="email">Contact Email</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="md-form form-lg">
+                                    <input type="text" th:field="*{addressCity}" class="form-control form-control-lg">
+                                    <label for="addressCity">City</label>
+                                </div>
+                                <div class="md-form form-lg">
+                                    <input type="text" th:field="*{addressStreet}" class="form-control form-control-lg">
+                                    <label for="addressStreet">Street Name</label>
+                                </div>
+                                <div class="md-form form-lg">
+                                    <input type="text" th:field="*{addressStreetNo}" class="form-control form-control-lg">
+                                    <label for="addressStreetNo">Street Number</label>
+                                </div>
+                                <div class="md-form form-lg">
+                                    <input type="text" th:field="*{addressPostCode}" class="form-control form-control-lg">
+                                    <label for="addressPostCode">Post Code</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="float-right">
+                                    <input class="btn btn-primary" type="submit" value="Submit"/>
+                                    <input class="btn btn-light" type="reset" value="Reset"/>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
