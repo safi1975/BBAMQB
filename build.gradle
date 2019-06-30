@@ -29,6 +29,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    
 
     compile("org.hibernate:hibernate-c3p0:5.3.7.Final")
     compile("com.h2database:h2")
@@ -37,6 +39,7 @@ dependencies {
     // end::actuator[]
     // tag::tests[]
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework.security:spring-security-test")
     // end::tests[]
 }
 
