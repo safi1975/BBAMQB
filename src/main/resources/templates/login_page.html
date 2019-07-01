@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+</head>
+<body>
+<main>
+    <div class="container-fluid mt-2">
+        <div class="card text-center">
+            <div class="card-header">
+                <h3 class="card-title">Login Page</h3>
+            </div>
+            <div class="card-body">
+                <form action="#" th:action="@{/login}" method="post">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-6">
+                        <div class="md-form form-lg">
+                            <input type="text" id="username" name="username" class="form-control form-control-lg">
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="md-form form-lg">
+                            <input type="password" id="password" name="password" class="form-control form-control-lg">
+                            <label for="password">Password</label>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-6">
+                            <div class="float-right">
+                                <input class="btn btn-primary" type="submit" value="Submit"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer_scripts_only"></footer>
+</body>
+</html>
