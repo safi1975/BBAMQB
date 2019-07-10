@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/img/**",
                         "/webjars/**").permitAll()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/**").permitAll() //temporary allow all
                 .anyRequest().authenticated()
             .and()
                 .formLogin()

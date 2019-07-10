@@ -45,10 +45,9 @@
         </div>
     </div>
 </main>
-<footer th:replace="fragments/footer :: footer_scripts_only"></footer>
 <script th:inline="javascript">
-    $(document).ready(function () {
-        $('#dt-client').dataTable();
+    document.addEventListener("DOMContentLoaded", function() {
+        $("table[id^='dt-']").dataTable();
     });
 </script>
 </body>
