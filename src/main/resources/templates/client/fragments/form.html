@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <div class="container-fluid mt-2" th:fragment="form">
         <div class="card">
             <div class="card-header">
@@ -8,11 +8,11 @@
             <div class="card-body">
                 <form action="#" th:action="@{/client}" th:object="${client}" method="post">
                     <fieldset th:readonly="true">
-                        <div class="row">
-                            <div class="col-md-12">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-6">
                             	<input type="hidden" th:field="*{id}" class="form-control form-control-lg">
                                 <div class="md-form form-lg">
-                                    <input type="text" th:field="*{name}" class="form-control form-control-lg">
+                                    <input type="text" th:field="*{name}" class="form-control form-control-lg" th:autofocus="true">
                                     <label for="name">Name</label>
                                 </div>
                                 <div class="md-form form-lg">
@@ -27,10 +27,12 @@
 										    <option th:value="${T(com.app.dataentry.constants.Product).PRODUCT_4}" th:text="${T(com.app.dataentry.constants.Product).PRODUCT_4}">4</option>
 										</select>
 	                                </div>
-	                            <div class="col-md-12">
+	                            <div class="col-md-6">
 	                                <div class="float-right">
 	                                    <input class="btn btn-primary" type="submit" value="Submit"/>
 	                                    <input class="btn btn-light" type="reset" value="Reset"/>
+	                                    <input sec:authorize="hasRole('ROLE_ADMIN') || hasRole('ROLE_OPERATOR')" class="btn btn-light" type="button" value="Back" th:onclick="'window.location=\'/client\''"/>
+	                                    <input sec:authorize="hasRole('ROLE_USER')" class="btn btn-light" type="button" value="Back" th:onclick="'window.location=\'/''"/>
 	                                </div>
 	                            </div>
 	                        </div>

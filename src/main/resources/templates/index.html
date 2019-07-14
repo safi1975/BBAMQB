@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head th:replace="fragments/header :: header">
 </head>
@@ -8,13 +8,15 @@
     <div class="container-fluid mt-2">
         <div class="card text-center">
             <div class="card-header">
-                <h3 class="card-title">System Status</h3>
+                <h3 class="card-title">Data Entry App</h3>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                    </div>
-                    <div class="col-md-6">
+				<div class="row justify-content-md-center">
+                    <div class="col-md-4">
+						<a sec:authorize="hasRole('ROLE_ADMIN') || hasRole('ROLE_OPERATOR')" class="btn btn-primary w-100" th:href="@{/client}">Clients</a>
+						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/user}">Users</a>
+						<a sec:authorize="hasRole('ROLE_USER')" class="btn btn-primary w-100" th:href="@{/client/edit/0}">Add Client</a>
+						<a class="btn btn-light w-100" th:href="@{/logout}">Logout</a>
                     </div>
                 </div>
             </div>
