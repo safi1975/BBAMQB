@@ -26,5 +26,4 @@ create table `client`
 );
 
 INSERT INTO app_user (id, name, password, role, enabled) VALUES (1, 'pyra', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_ADMIN', true);
-INSERT INTO app_user (id, name, password, role, enabled) VALUES (2, 'user', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_USER', true);
 INSERT INTO app_user (id, name, password, role, enabled) VALUES (3, 'oper', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_OPERATOR', true);

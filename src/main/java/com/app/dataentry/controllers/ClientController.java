@@ -2,9 +2,6 @@ package com.app.dataentry.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,25 +26,17 @@ public class ClientController {
 		return "client/index";
 	}
 
-	@Secured(value = { Role.ADMIN, Role.OPERATOR, Role.USER })
+	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@GetMapping("/client/edit/{id}")
 	public String edit(Model model, @PathVariable Long id) {
 		model.addAttribute("client", clientService.getClient(id));
 		return "client/form";
 	}
 	
-	@Secured(value = { Role.ADMIN, Role.OPERATOR, Role.USER })
+	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@PostMapping("/client")
 	public String save(Model model, @ModelAttribute(name = "client") ClientDto clientDto) {
 		if (clientService.saveClient(clientDto) != null) {
-			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			if (authentication != null) {
-				for (GrantedAuthority ga : authentication.getAuthorities()) {
-					if (ga.getAuthority().equals(Role.USER)) {
-						return "redirect:/"; 
-					}
-				}
-			}
 			return "redirect:/client";
 		}
 		model.addAttribute("client", clientDto);

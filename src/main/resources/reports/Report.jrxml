@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="10d90163-ade3-47d7-bc44-b2ac0d2eb8a0">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="phone1" class="java.lang.String"/>
+	<field name="phone2" class="java.lang.String"/>
+	<field name="phone3" class="java.lang.String"/>
+	<field name="phone4" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="29" y="0" width="513" height="45" uuid="44d1455e-4cf1-43ec-b68d-a572650cebad"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[BAZME BARKAATE ALEY MUSTAFA
+REF: Safi Haider Syed +91 98700 57600 Email: safi@jamia.in]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="757" splitType="Stretch">
+			<rectangle>
+				<reportElement x="29" y="10" width="501" height="720" uuid="381cf4dd-cdd2-4419-9bf0-5bdb0a36c42c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="87" width="501" height="41" uuid="7755f2ac-477c-4f89-a3a7-72f133562309"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="169" width="501" height="41" uuid="de8b1d60-c5ab-4f94-a54b-74fa77c48d01"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="128" width="501" height="41" uuid="51a188c4-e402-4189-bbd9-7c72f027acec"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="291" width="501" height="41" uuid="d8605d5c-1422-43d3-9954-dc89365bb251"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="250" width="501" height="41" uuid="cf884652-2989-45b9-89ae-03d4dbbf0050"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="209" width="501" height="41" uuid="5168be72-0ca3-4ef2-81bf-25752c66f02d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="332" width="501" height="41" uuid="d968ce10-10ad-44eb-8669-da4afb397b13"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="689" width="501" height="41" uuid="b2bbc976-b175-4900-8af2-b354d54e26f9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="648" width="501" height="41" uuid="12bfd44a-dcaf-4fa0-a5f1-ce20f2939cf3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="607" width="501" height="41" uuid="34695013-ce3b-4183-b4a7-702a39271745"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="566" width="501" height="41" uuid="1fab6891-ecb1-4a11-ac60-72b18bd7fc08"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="526" width="501" height="41" uuid="f0be149a-680d-4df5-bbc5-2f811bf167e0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="485" width="501" height="41" uuid="7b37d153-05b4-4425-a82e-0bd25620b252"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="29" y="444" width="501" height="41" uuid="3d5bd71d-fcd2-44e4-af19-c42074b94921"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="265" y="10" width="41" height="720" uuid="17ca502b-aa7f-47fe-a6e4-db3c750b42a2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="271" y="16" width="31" height="24" uuid="d19be7ec-56e1-4018-b937-dbcc114244f6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[SR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="40" width="31" height="21" uuid="274240eb-2a52-46c5-91e2-4af891c6342a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="87" width="44" height="40" uuid="c9df0992-3daa-4630-8875-93270b0476c4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="128" width="44" height="40" uuid="c0d6bbda-18b5-4311-800f-1427b328415c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="169" width="44" height="40" uuid="dd1097e7-aa9c-4d49-b9f5-2e561c20d165"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="250" width="44" height="40" uuid="79af32d1-9f34-4d89-ace3-9be7026399bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="291" width="44" height="40" uuid="c75778ee-6c00-4eb6-a685-ba822158dcd0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="209" width="44" height="40" uuid="511a1320-5f0f-4ad5-9aaa-531aa1e871a4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="333" width="44" height="40" uuid="c17bc11e-471c-4037-94c8-2259ab4b4785"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="690" width="44" height="40" uuid="6cbe85c4-6427-4976-a9d5-7b1b62bf1247"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="648" width="44" height="40" uuid="b4888eb7-a1fc-4243-b5ab-6f6e96b45a46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="607" width="44" height="40" uuid="c25d702f-af00-4d59-a2b3-c25382dbfc84"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="566" width="44" height="40" uuid="acc1f9a0-94b5-4560-a472-9dac7dfbe4cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="526" width="44" height="40" uuid="86bc534e-f6e7-409c-8126-7b2ff90fa051"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="485" width="44" height="40" uuid="c3ae4f58-b9f9-4851-a797-0bcc712d7adc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="444" width="44" height="40" uuid="17878f87-6cc2-4890-8936-07d208f58e65"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="33" y="10" width="232" height="76" uuid="17852e5e-efd9-48ef-aa89-902dc91d4ef0"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SMS:"+$F{phone1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="309" y="10" width="220" height="76" uuid="e5b7bb91-c1d2-44c2-b669-eb620cee4668"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SMS:"+$F{phone2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="33" y="374" width="232" height="70" uuid="790d5141-ce2d-44b6-8954-ac469576a643"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SMS:"+$F{phone3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="309" y="374" width="220" height="70" uuid="9012b8da-4a64-4b3c-bd97-d6707f09e98c"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SMS:"+$F{phone4}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
