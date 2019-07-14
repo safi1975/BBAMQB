@@ -17,6 +17,9 @@ public class Client implements BaseEntity {
 
     @Column(name = "mobile_no")
     private String mobileNo;
+    
+    @Column(name = "product")
+    private String product;
 
     public Long getId() {
         return id;
@@ -41,4 +44,12 @@ public class Client implements BaseEntity {
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
+    
+    public String getProduct() {
+		return product;
+	}
+
+	public void setProduct(String product) {
+		this.product = product;
+	}
 }

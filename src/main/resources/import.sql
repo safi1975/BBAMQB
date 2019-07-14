@@ -21,6 +21,7 @@ create table `client`
   `id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `mobile_no` varchar(255) DEFAULT NULL,
+  `product` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "app_user")
-public class User {
+public class User implements BaseEntity {
 	
 	@Id
     @SequenceGenerator(sequenceName = "app_user_seq", name="app_user_seq_id", initialValue = 20, allocationSize = 10)

@@ -8,8 +8,9 @@ public class ClientDto implements BaseDto<Client> {
     private Long id;
 	private String name;
     private String mobileNo;
+    private String product;
 
-    public Long getId() {
+	public Long getId() {
         return id;
     }
 
@@ -32,10 +33,19 @@ public class ClientDto implements BaseDto<Client> {
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
+    
+    public String getProduct() {
+		return product;
+	}
+
+	public void setProduct(String product) {
+		this.product = product;
+	}
 
     public ClientDto() {
 
     }
+    
     public ClientDto(Client c) {
         mapFromEntity(c);
     }
@@ -47,6 +57,7 @@ public class ClientDto implements BaseDto<Client> {
         id = entity.getId();
         name = entity.getName();
         mobileNo = entity.getMobileNo();
+        product = entity.getProduct();
         return this;
     }
 
@@ -58,6 +69,7 @@ public class ClientDto implements BaseDto<Client> {
         }
         entity.setName(name);
         entity.setMobileNo(mobileNo);
+        entity.setProduct(product);
         return entity;
     }
 }
