@@ -1,10 +1,6 @@
 package com.app.dataentry.services;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +27,7 @@ public class ReportServiceImpl {
         Map parameters = new HashMap();
         try {
         		
-               JasperPrint fillReport = JasperFillManager.fillReport(this.getClass().getClassLoader().getResource("reports/report_template.jasper").getPath(), parameters, beanColDataSource);
+               JasperPrint fillReport = JasperFillManager.fillReport(this.getClass().getClassLoader().getResourceAsStream("reports/report_template.jasper"), parameters, beanColDataSource);
                ByteArrayOutputStream output = new ByteArrayOutputStream(); 
                JasperExportManager.exportReportToPdfStream(fillReport, output);
                 return output;
