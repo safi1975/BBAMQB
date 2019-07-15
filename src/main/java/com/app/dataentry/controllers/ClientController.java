@@ -1,6 +1,5 @@
 package com.app.dataentry.controllers;
 
-import com.app.dataentry.domain.ClientsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -12,10 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.dataentry.constants.Role;
 import com.app.dataentry.domain.ClientDto;
+import com.app.dataentry.domain.ClientsDto;
 import com.app.dataentry.services.ClientService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class ClientController {
@@ -46,6 +43,15 @@ public class ClientController {
 		}
 		model.addAttribute("clientsDto", clients);
 		return "client/form_multi";
+	}
+	
+	@Secured(value = { Role.ADMIN, Role.OPERATOR })
+	@PostMapping("/client_multi")
+	public String saveMulti(Model model, @ModelAttribute(name = "clients") ClientsDto clientsDto) {
+		for (ClientDto clientDto: clientsDto.getClients()) {
+			clientService.saveClient(clientDto);
+		}
+		return "redirect:/client";
 	}
 	
 	@Secured(value = { Role.ADMIN, Role.OPERATOR })
