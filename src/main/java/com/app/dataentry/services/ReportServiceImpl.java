@@ -15,18 +15,15 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Service
-public class ReportServiceImpl {
+public class ReportServiceImpl implements ReportService {
 	
-	public ByteArrayOutputStream generateReport() {
-		
-		PageList pageList = new PageList();
-		
+	@Override
+	public ByteArrayOutputStream generateReport(PageList pageList) {		
 		
 		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(pageList.getPageList());
 
         Map<String, Object> parameters = new HashMap<>();
-        try {
-        		
+        try {       		
                JasperPrint fillReport = JasperFillManager.fillReport(this.getClass().getClassLoader().getResourceAsStream("reports/report_template.jasper"), parameters, beanColDataSource);
                ByteArrayOutputStream output = new ByteArrayOutputStream(); 
                JasperExportManager.exportReportToPdfStream(fillReport, output);
@@ -36,5 +33,4 @@ public class ReportServiceImpl {
         }
         return null;
 	}
-
 }

@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.app.dataentry.constants.Role;
-import com.app.dataentry.services.ReportServiceImpl;
+import com.app.dataentry.services.ClientService;
+import com.app.dataentry.services.ReportService;
 
 @Controller
 public class MainController {
 
 	@Autowired
-	ReportServiceImpl re;
+	ReportService reportService;
+	
+	@Autowired
+	ClientService clientService;
 	
     @GetMapping("/")
     public String main(Model model) {
@@ -35,7 +39,7 @@ public class MainController {
     @ResponseBody
     @GetMapping(value = "/report", produces = MediaType.APPLICATION_PDF_VALUE)
     public byte[] report(Model model, HttpServletResponse response) {
-    	ByteArrayOutputStream output = re.generateReport();
+    	ByteArrayOutputStream output = reportService.generateReport(clientService.getPages());
     	return output.toByteArray();
     }
 }
