@@ -1,8 +1,6 @@
 package com.app.dataentry.controllers;
 
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class PageList {
 	
-	public ArrayList getPageList() {
+	public ArrayList<Page> getPageList() {
 		
-		ArrayList pageList = new ArrayList();
+		ArrayList<Page> pageList = new ArrayList<>();
 		Page page1 = new Page();
 		page1.setPhone1("1111");
 		page1.setPhone2("2222");

@@ -24,7 +24,7 @@ public class ReportServiceImpl {
 		
 		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(pageList.getPageList());
 
-        Map parameters = new HashMap();
+        Map<String, Object> parameters = new HashMap<>();
         try {
         		
                JasperPrint fillReport = JasperFillManager.fillReport(this.getClass().getClassLoader().getResourceAsStream("reports/report_template.jasper"), parameters, beanColDataSource);
