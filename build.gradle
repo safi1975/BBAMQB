@@ -20,6 +20,9 @@ jar {
 
 repositories {
     mavenCentral()
+    maven {
+        url 'http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/'
+    }
 }
 
 sourceCompatibility = 1.8
