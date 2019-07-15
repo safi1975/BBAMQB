@@ -37,7 +37,7 @@
 			<staticText>
 				<reportElement x="29" y="0" width="513" height="45" uuid="44d1455e-4cf1-43ec-b68d-a572650cebad"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="18"/>
+					<font fontName="SansSerif" size="16"/>
 				</textElement>
 				<text><![CDATA[BAZME BARKAATE ALEY MUSTAFA
 REF: Safi Haider Syed +91 98700 57600 Email: safi@jamia.in]]></text>
@@ -97,14 +97,14 @@ REF: Safi Haider Syed +91 98700 57600 Email: safi@jamia.in]]></text>
 			<staticText>
 				<reportElement x="271" y="16" width="31" height="24" uuid="d19be7ec-56e1-4018-b937-dbcc114244f6"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="18"/>
+					<font fontName="SansSerif" size="18"/>
 				</textElement>
 				<text><![CDATA[SR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="271" y="40" width="31" height="21" uuid="274240eb-2a52-46c5-91e2-4af891c6342a"/>
+				<reportElement x="271" y="40" width="31" height="30" uuid="274240eb-2a52-46c5-91e2-4af891c6342a"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="18"/>
+					<font fontName="SansSerif" size="18"/>
 				</textElement>
 				<text><![CDATA[NO]]></text>
 			</staticText>
