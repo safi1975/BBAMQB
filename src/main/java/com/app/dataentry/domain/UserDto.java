@@ -10,6 +10,7 @@ public class UserDto implements BaseDto<User> {
 	private String name;
 	private String password; 
 	private String role;
+	private String mobileNo;
 
 	public Long getId() {
 		return id;
@@ -42,6 +43,14 @@ public class UserDto implements BaseDto<User> {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public String getMobileNo() {
+		return mobileNo;
+	}
+
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
 	
 	public UserDto() {
 		
@@ -57,6 +66,7 @@ public UserDto(User entity) {
 		name = entity.getName(); 
 		password = entity.getPassword();
 		role = entity.getRole();
+		mobileNo = entity.getMobileNo();
 		return this;
 	}
 
@@ -67,8 +77,11 @@ public UserDto(User entity) {
 			entity.setId(id);
         }
         entity.setName(name);
-        entity.setPassword(password);
+		if (!StringUtils.isEmpty(password)) {
+			entity.setPassword(password);
+		}
         entity.setRole(role);
+        entity.setMobileNo(mobileNo);
 		return entity;
 	}
 

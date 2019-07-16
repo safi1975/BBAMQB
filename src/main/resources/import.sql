@@ -8,6 +8,7 @@ create table `app_user`
   `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
+  `mobile_no` varchar(255),
   `enabled` int NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 );

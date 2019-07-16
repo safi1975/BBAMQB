@@ -7,38 +7,40 @@
         <div class="container-fluid mt-2" th:fragment="form">
 	        <div class="card">
 	            <div class="card-header">
-	                <h3 class="card-title">Client Form</h3>
+	                <h3 class="card-title">User Form</h3>
 	            </div>
 	            <div class="card-body">
-	                <form action="#" th:action="@{/client}" th:object="${client}" method="post">
+	                <form action="#" th:action="@{/user}" th:object="${user}" method="post">
 	                    <fieldset th:readonly="true">
-	                        <div class="row">
-	                            <div class="col-md-12">
+	                        <div class="row justify-content-md-center">
+	                            <div class="col-md-6">
 	                            	<input type="hidden" th:field="*{id}" class="form-control form-control-lg">
 	                                <div class="md-form form-lg">
 	                                    <input type="text" th:field="*{name}" class="form-control form-control-lg" th:autofocus="true">
 	                                    <label for="name">Username</label>
 	                                </div>
 	                                <div class="md-form form-lg">
-	                                    <input type="text" th:field="*{password}" class="form-control form-control-lg">
+	                                    <input type="password" th:field="*{password}" class="form-control form-control-lg">
 	                                    <label for="password">Password</label>
 	                                </div>
+									<div class="md-form form-lg">
+										<input type="text" th:field="*{mobileNo}" class="form-control form-control-lg">
+										<label for="mobileNo">MobileNo</label>
+									</div>
 	                                <div class="md-form form-lg">
-	                                    <select th:field="*{role}">
-										    <option th:value="${T(com.app.dataentry.constants.Role).USER}" th:text="User"></option>
+	                                    <select class="browser-default custom-select custom-select-lg" th:field="*{role}">
 										    <option th:value="${T(com.app.dataentry.constants.Role).OPERATOR}" th:text="Operator"></option>
 										    <option th:value="${T(com.app.dataentry.constants.Role).ADMIN}" th:text="Admin"></option>
 										</select>
-	                                    <label for="role">Role</label>
 	                                </div>
-		                            <div class="col-md-12">
-		                                <div class="float-right">
-		                                    <input class="btn btn-primary" type="submit" value="Submit"/>
-		                                    <input class="btn btn-light" type="reset" value="Reset"/>
-		                                    <input class="btn btn-light" type="button" value="Back" th:onclick="'window.location=\'/user\''"/>
-		                                </div>
-		                            </div>
 		                        </div>
+								<div class="col-md-6">
+									<div class="float-right">
+										<input class="btn btn-primary" type="submit" value="Submit"/>
+										<input class="btn btn-light" type="reset" value="Reset"/>
+										<input class="btn btn-light" type="button" value="Back" th:onclick="'window.location=\'/user\''"/>
+									</div>
+								</div>
 	                        </div>
 	                    </fieldset>
 	                </form>

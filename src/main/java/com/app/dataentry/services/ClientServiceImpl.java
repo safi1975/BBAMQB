@@ -51,12 +51,14 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public ClientDto getClient(Long id) {
 		Optional<Client> client = clientRepository.findById(id);
 		return new ClientDto(client.orElse(new Client()));
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public PageList getPages() {
 		PageList pages = new PageList();
 		List<Client> products1 = clientRepository.findAllByProduct(Product.PRODUCT_1);

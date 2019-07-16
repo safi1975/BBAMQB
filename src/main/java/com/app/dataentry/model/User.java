@@ -27,6 +27,9 @@ public class User implements BaseEntity {
     @Column(name = "role")
     private String role;
 
+	@Column(name = "mobile_no")
+	private String mobileNo;
+
 	public Long getId() {
 		return id;
 	}
@@ -57,5 +60,13 @@ public class User implements BaseEntity {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getMobileNo() {
+		return mobileNo;
+	}
+
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
 	}
 }
