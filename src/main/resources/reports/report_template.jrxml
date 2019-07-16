@@ -217,230 +217,230 @@ REF: Safi Haider Syed +91 98700 57600 Email: safi@jamia.in]]></text>
 			<textField>
 				<reportElement x="33" y="23" width="232" height="76" uuid="17852e5e-efd9-48ef-aa89-902dc91d4ef0"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SMS:"+$F{phone1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="309" y="23" width="220" height="76" uuid="e5b7bb91-c1d2-44c2-b669-eb620cee4668"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SMS:"+$F{phone2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="33" y="387" width="232" height="70" uuid="790d5141-ce2d-44b6-8954-ac469576a643"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SMS:"+$F{phone3}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="309" y="387" width="220" height="70" uuid="9012b8da-4a64-4b3c-bd97-d6707f09e98c"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SMS:"+$F{phone4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="103" width="221" height="36" uuid="727f1ee9-2e89-4227-8d84-e5754a636dd3"/>
+				<reportElement x="40" y="101" width="221" height="36" uuid="727f1ee9-2e89-4227-8d84-e5754a636dd3"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client1prod1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="144" width="221" height="36" uuid="403f809d-bf13-44bf-ad60-9d5eeb676deb"/>
+				<reportElement x="40" y="142" width="221" height="36" uuid="403f809d-bf13-44bf-ad60-9d5eeb676deb"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client2prod1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="227" width="221" height="36" uuid="521a64f3-3b85-4756-a629-fa2afb82fde0"/>
+				<reportElement x="40" y="225" width="221" height="36" uuid="521a64f3-3b85-4756-a629-fa2afb82fde0"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client4prod1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="186" width="221" height="36" uuid="29115501-002e-4d89-be79-ae066c1d2bff"/>
+				<reportElement x="40" y="184" width="221" height="36" uuid="29115501-002e-4d89-be79-ae066c1d2bff"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client3prod1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="349" width="221" height="36" uuid="c637ce28-9f9c-4470-9a4f-53062f7def3d"/>
+				<reportElement x="40" y="347" width="221" height="36" uuid="c637ce28-9f9c-4470-9a4f-53062f7def3d"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client7prod1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="308" width="221" height="36" uuid="f0da0e58-5e4f-4c8c-b47a-d11c7af21265"/>
+				<reportElement x="40" y="306" width="221" height="36" uuid="f0da0e58-5e4f-4c8c-b47a-d11c7af21265"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client6prod1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="266" width="221" height="36" uuid="4488dd74-c208-4e06-a6c3-95220895c0f5"/>
+				<reportElement x="40" y="264" width="221" height="36" uuid="4488dd74-c208-4e06-a6c3-95220895c0f5"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client5prod1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="103" width="221" height="36" uuid="48ba580d-838b-4b23-95b2-a53a7bab3de0"/>
+				<reportElement x="309" y="101" width="221" height="36" uuid="48ba580d-838b-4b23-95b2-a53a7bab3de0"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client1prod2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="349" width="221" height="36" uuid="e0df9a55-a960-4026-9f5a-f82b9b772cc9"/>
+				<reportElement x="309" y="347" width="221" height="36" uuid="e0df9a55-a960-4026-9f5a-f82b9b772cc9"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client7prod2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="308" width="221" height="36" uuid="bf3994e4-0f88-4a38-ab7a-9953d5a69e79"/>
+				<reportElement x="309" y="306" width="221" height="36" uuid="bf3994e4-0f88-4a38-ab7a-9953d5a69e79"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client6prod2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="227" width="221" height="36" uuid="63816984-95df-4135-a4c2-b7f55bef5fc1"/>
+				<reportElement x="309" y="225" width="221" height="36" uuid="63816984-95df-4135-a4c2-b7f55bef5fc1"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client4prod2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="144" width="221" height="36" uuid="9defcdfc-c362-449f-a326-807b244a04c7"/>
+				<reportElement x="309" y="142" width="221" height="36" uuid="9defcdfc-c362-449f-a326-807b244a04c7"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client2prod2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="186" width="221" height="36" uuid="13c67c4f-515a-4629-b0f2-d7a2f2c663f0"/>
+				<reportElement x="309" y="184" width="221" height="36" uuid="13c67c4f-515a-4629-b0f2-d7a2f2c663f0"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client3prod2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="266" width="221" height="36" uuid="46aa061b-6c35-4f17-9200-3866d7dd84fb"/>
+				<reportElement x="309" y="264" width="221" height="36" uuid="46aa061b-6c35-4f17-9200-3866d7dd84fb"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client5prod2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="706" width="221" height="36" uuid="cce9e1cd-8ece-40e9-a107-07498ca941da"/>
+				<reportElement x="40" y="704" width="221" height="36" uuid="cce9e1cd-8ece-40e9-a107-07498ca941da"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client7prod3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="665" width="221" height="36" uuid="1df381fc-48c7-4580-9e0b-b74f8873f91d"/>
+				<reportElement x="40" y="663" width="221" height="36" uuid="1df381fc-48c7-4580-9e0b-b74f8873f91d"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client6prod3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="623" width="221" height="36" uuid="eb028dc7-984a-441d-900e-e0ccc266ee80"/>
+				<reportElement x="40" y="621" width="221" height="36" uuid="eb028dc7-984a-441d-900e-e0ccc266ee80"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client5prod3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="584" width="221" height="36" uuid="a077098b-569e-4c02-af4e-0749e724d662"/>
+				<reportElement x="40" y="582" width="221" height="36" uuid="a077098b-569e-4c02-af4e-0749e724d662"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client4prod3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="543" width="221" height="36" uuid="b953e4d4-2478-4fc2-b7a3-6f33f6aaeb08"/>
+				<reportElement x="40" y="541" width="221" height="36" uuid="b953e4d4-2478-4fc2-b7a3-6f33f6aaeb08"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client3prod3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="501" width="221" height="36" uuid="850e9db9-f230-47d7-8ada-8d79009a669a"/>
+				<reportElement x="40" y="499" width="221" height="36" uuid="850e9db9-f230-47d7-8ada-8d79009a669a"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client2prod3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="460" width="221" height="36" uuid="a847cbf0-9ce0-4aa3-8353-fad5e64bd800"/>
+				<reportElement x="40" y="458" width="221" height="36" uuid="a847cbf0-9ce0-4aa3-8353-fad5e64bd800"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client1prod3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="707" width="221" height="36" uuid="cd294a62-d318-406b-bab5-4e979323a7bd"/>
+				<reportElement x="309" y="705" width="221" height="36" uuid="cd294a62-d318-406b-bab5-4e979323a7bd"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client7prod4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="666" width="221" height="36" uuid="07e45945-7b39-423c-8ee9-23fabc1cab6b"/>
+				<reportElement x="309" y="664" width="221" height="36" uuid="07e45945-7b39-423c-8ee9-23fabc1cab6b"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client6prod4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="624" width="221" height="36" uuid="50efbbbd-8096-4f31-bd9c-b9b54e9d8008"/>
+				<reportElement x="309" y="622" width="221" height="36" uuid="50efbbbd-8096-4f31-bd9c-b9b54e9d8008"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client5prod4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="585" width="221" height="36" uuid="ea5143a9-a537-44b8-a45f-3062e810e001"/>
+				<reportElement x="309" y="583" width="221" height="36" uuid="ea5143a9-a537-44b8-a45f-3062e810e001"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client4prod4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="544" width="221" height="36" uuid="c09508c6-5c7d-48c8-b958-f292f733708a"/>
+				<reportElement x="309" y="542" width="221" height="36" uuid="c09508c6-5c7d-48c8-b958-f292f733708a"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client3prod4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="502" width="221" height="36" uuid="5c9c516b-32ab-4845-9bd5-7a7768710157"/>
+				<reportElement x="309" y="500" width="221" height="36" uuid="5c9c516b-32ab-4845-9bd5-7a7768710157"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client2prod4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="461" width="221" height="36" uuid="232bd053-517a-4229-bd90-ba065e38082a"/>
+				<reportElement x="309" y="459" width="221" height="36" uuid="232bd053-517a-4229-bd90-ba065e38082a"/>
 				<textElement>
-					<font size="16"/>
+					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{client1prod4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="250" y="0" width="69" height="23" uuid="74984063-e73c-4b21-b42d-ba5b9d32e4b5"/>
-				<textElement>
+				<reportElement x="224" y="0" width="110" height="23" uuid="74984063-e73c-4b21-b42d-ba5b9d32e4b5"/>
+				<textElement textAlignment="Center">
 					<font size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nos}]]></textFieldExpression>
