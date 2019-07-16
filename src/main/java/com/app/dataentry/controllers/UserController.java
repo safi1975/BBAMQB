@@ -1,9 +1,5 @@
 package com.app.dataentry.controllers;
 
-import com.app.dataentry.constants.Role;
-import com.app.dataentry.domain.ClientDto;
-import com.app.dataentry.domain.UserDto;
-import com.app.dataentry.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -12,6 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.app.dataentry.constants.Role;
+import com.app.dataentry.domain.UserDto;
+import com.app.dataentry.services.UserService;
 
 @Controller
 public class UserController {

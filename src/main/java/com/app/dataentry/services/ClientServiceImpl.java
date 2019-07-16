@@ -1,6 +1,7 @@
 package com.app.dataentry.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -13,10 +14,12 @@ import com.app.dataentry.report.PageList;
 import com.app.dataentry.repositories.ClientRepository;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Scope("prototype")
 public class ClientServiceImpl implements ClientService {
 
 	@Autowired
@@ -31,6 +34,10 @@ public class ClientServiceImpl implements ClientService {
 		}
 		return clients;
 	}
+
+	LinkedList<Client> clientsToPage = new LinkedList<>();
+	int low = 0;
+	int high = 0;
 
 	@Override
 	@Transactional
@@ -57,110 +64,172 @@ public class ClientServiceImpl implements ClientService {
 		return new ClientDto(client.orElse(new Client()));
 	}
 
+	private Page generatePage() {
+		Page page = new Page();
+
+		String phone1 = "";
+		for (int i = 0; 7 > i; i++) {
+			if (clientsToPage.isEmpty()) {
+				break;
+			}
+			Client client = clientsToPage.getFirst();
+			phone1 = phone1 + (StringUtils.isEmpty(client.getMobileNo()) ? "" : client.getMobileNo() + ",");
+			switch (i) {
+			case 0:
+				page.setClient1prod1(client.getName());
+				break;
+			case 1:
+				page.setClient2prod1(client.getName());
+				break;
+			case 2:
+				page.setClient3prod1(client.getName());
+				break;
+			case 3:
+				page.setClient4prod1(client.getName());
+				break;
+			case 4:
+				page.setClient5prod1(client.getName());
+				break;
+			case 5:
+				page.setClient6prod1(client.getName());
+				break;
+			case 6:
+				page.setClient7prod1(client.getName());
+				break;
+			}
+			clientsToPage.removeFirst();
+		}
+		page.setPhone1(phone1);
+
+		String phone2 = "";
+		for (int i = 0; 7 > i; i++) {
+			if (clientsToPage.isEmpty()) {
+				break;
+			}
+			Client client = clientsToPage.getFirst();
+			phone2 = phone2 + (StringUtils.isEmpty(client.getMobileNo()) ? "" : client.getMobileNo() + ",");
+			switch (i) {
+			case 0:
+				page.setClient1prod2(client.getName());
+				break;
+			case 1:
+				page.setClient2prod2(client.getName());
+				break;
+			case 2:
+				page.setClient3prod2(client.getName());
+				break;
+			case 3:
+				page.setClient4prod2(client.getName());
+				break;
+			case 4:
+				page.setClient5prod2(client.getName());
+				break;
+			case 5:
+				page.setClient6prod2(client.getName());
+				break;
+			case 6:
+				page.setClient7prod2(client.getName());
+				break;
+			}
+			clientsToPage.removeFirst();
+		}
+		page.setPhone2(phone2);
+
+		String phone3 = "";
+		for (int i = 0; 7 > i; i++) {
+			if (clientsToPage.isEmpty()) {
+				break;
+			}
+			Client client = clientsToPage.getFirst();
+			phone3 = phone3 + (StringUtils.isEmpty(client.getMobileNo()) ? "" : client.getMobileNo() + ",");
+			switch (i) {
+			case 0:
+				page.setClient1prod3(client.getName());
+				break;
+			case 1:
+				page.setClient2prod3(client.getName());
+				break;
+			case 2:
+				page.setClient3prod3(client.getName());
+				break;
+			case 3:
+				page.setClient4prod3(client.getName());
+				break;
+			case 4:
+				page.setClient5prod3(client.getName());
+				break;
+			case 5:
+				page.setClient6prod3(client.getName());
+				break;
+			case 6:
+				page.setClient7prod3(client.getName());
+				break;
+			}
+			clientsToPage.removeFirst();
+		}
+		page.setPhone3(phone3);
+
+		String phone4 = "";
+		for (int i = 0; 7 > i; i++) {
+			if (clientsToPage.isEmpty()) {
+				break;
+			}
+			Client client = clientsToPage.getFirst();
+			phone4 = phone4 + (StringUtils.isEmpty(client.getMobileNo()) ? "" : client.getMobileNo() + ",");
+			switch (i) {
+			case 0:
+				page.setClient1prod4(client.getName());
+				break;
+			case 1:
+				page.setClient2prod4(client.getName());
+				break;
+			case 2:
+				page.setClient3prod4(client.getName());
+				break;
+			case 3:
+				page.setClient4prod4(client.getName());
+				break;
+			case 4:
+				page.setClient5prod4(client.getName());
+				break;
+			case 5:
+				page.setClient6prod4(client.getName());
+				break;
+			case 6:
+				page.setClient7prod4(client.getName());
+				break;
+			}
+			clientsToPage.removeFirst();
+		}
+		page.setPhone4(phone4);
+		page.setNos("No: " + low + "-" + high);
+
+		return page;
+	}
+
 	@Override
 	@Transactional(readOnly = true)
 	public PageList getPages() {
 		PageList pages = new PageList();
-		List<Client> products1 = clientRepository.findAllByProduct(Product.PRODUCT_1);
-		List<Client> products2 = clientRepository.findAllByProduct(Product.PRODUCT_2);
-		List<Client> products3 = clientRepository.findAllByProduct(Product.PRODUCT_3);
+		low = -3;
+		high = 0;
 
-		int size;
-		if (products1.size() >= products2.size() && products1.size() >= products3.size()) {
-			size = products1.size();
-		} else if (products2.size() >= products3.size()) {
-			size = products2.size();
-		} else {
-			size = products3.size();
+		for (Client client : clientRepository.findAll()) {
+			if (client.getProduct().equals(Product.PRODUCT_3)) {
+				clientsToPage.add(client);
+				clientsToPage.add(client);
+			} else {
+				clientsToPage.add(client);
+			}
+			if (clientsToPage.size() >= 28) {
+				low = low + 4;
+				high = high + 4;
+				pages.addPage(generatePage());
+			}
 		}
-
-		for (int i = 6; size + 7 > i; i = i + 7) {
-			Page page = new Page();
-
-			String phone1 = "";
-			try {
-				Client client1 = products1.get(i - 6);
-				phone1 = phone1 + (StringUtils.isEmpty(client1.getMobileNo()) ? "" : client1.getMobileNo() + " ");
-				page.setClient1prod1(client1.getName());
-				Client client2 = products1.get(i - 5);
-				phone1 = phone1 + (StringUtils.isEmpty(client2.getMobileNo()) ? "" : client2.getMobileNo() + " ");
-				page.setClient2prod1(client2.getName());
-				Client client3 = products1.get(i - 4);
-				phone1 = phone1 + (StringUtils.isEmpty(client3.getMobileNo()) ? "" : client3.getMobileNo() + " ");
-				page.setClient3prod1(client3.getName());
-				Client client4 = products1.get(i - 3);
-				phone1 = phone1 + (StringUtils.isEmpty(client4.getMobileNo()) ? "" : client4.getMobileNo() + " ");
-				page.setClient4prod1(client4.getName());
-				Client client5 = products1.get(i - 2);
-				phone1 = phone1 + (StringUtils.isEmpty(client5.getMobileNo()) ? "" : client5.getMobileNo() + " ");
-				page.setClient5prod1(client5.getName());
-				Client client6 = products1.get(i - 1);
-				phone1 = phone1 + (StringUtils.isEmpty(client6.getMobileNo()) ? "" : client6.getMobileNo() + " ");
-				page.setClient6prod1(client6.getName());
-				Client client7 = products1.get(i);
-				phone1 = phone1 + (StringUtils.isEmpty(client7.getMobileNo()) ? "" : client7.getMobileNo() + " ");
-				page.setClient7prod1(client7.getName());
-			} catch (IndexOutOfBoundsException e) {
-			}
-			page.setPhone1(phone1);
-
-			String phone2 = "";
-			try {
-				Client client1 = products2.get(i - 6);
-				phone2 = phone2 + (StringUtils.isEmpty(client1.getMobileNo()) ? "" : client1.getMobileNo() + " ");
-				page.setClient1prod2(client1.getName());
-				Client client2 = products2.get(i - 5);
-				phone2 = phone2 + (StringUtils.isEmpty(client2.getMobileNo()) ? "" : client2.getMobileNo() + " ");
-				page.setClient2prod2(client2.getName());
-				Client client3 = products2.get(i - 4);
-				phone2 = phone2 + (StringUtils.isEmpty(client3.getMobileNo()) ? "" : client3.getMobileNo() + " ");
-				page.setClient3prod2(client3.getName());
-				Client client4 = products2.get(i - 3);
-				phone2 = phone2 + (StringUtils.isEmpty(client4.getMobileNo()) ? "" : client4.getMobileNo() + " ");
-				page.setClient4prod2(client4.getName());
-				Client client5 = products2.get(i - 2);
-				phone2 = phone2 + (StringUtils.isEmpty(client5.getMobileNo()) ? "" : client5.getMobileNo() + " ");
-				page.setClient5prod2(client5.getName());
-				Client client6 = products2.get(i - 1);
-				phone2 = phone2 + (StringUtils.isEmpty(client6.getMobileNo()) ? "" : client6.getMobileNo() + " ");
-				page.setClient6prod2(client6.getName());
-				Client client7 = products2.get(i);
-				phone2 = phone2 + (StringUtils.isEmpty(client7.getMobileNo()) ? "" : client7.getMobileNo() + " ");
-				page.setClient7prod2(client7.getName());
-			} catch (IndexOutOfBoundsException e) {
-			}
-			page.setPhone2(phone2);
-
-			String phone3 = "";
-			try {
-				Client client1 = products3.get(i - 6);
-				phone3 = phone3 + (StringUtils.isEmpty(client1.getMobileNo()) ? "" : client1.getMobileNo() + " ");
-				page.setClient1prod3(client1.getName());
-				Client client2 = products3.get(i - 5);
-				phone3 = phone3 + (StringUtils.isEmpty(client2.getMobileNo()) ? "" : client2.getMobileNo() + " ");
-				page.setClient2prod3(client2.getName());
-				Client client3 = products3.get(i - 4);
-				phone3 = phone3 + (StringUtils.isEmpty(client3.getMobileNo()) ? "" : client3.getMobileNo() + " ");
-				page.setClient3prod3(client3.getName());
-				Client client4 = products3.get(i - 3);
-				phone3 = phone3 + (StringUtils.isEmpty(client4.getMobileNo()) ? "" : client4.getMobileNo() + " ");
-				page.setClient4prod3(client4.getName());
-				Client client5 = products3.get(i - 2);
-				phone3 = phone3 + (StringUtils.isEmpty(client5.getMobileNo()) ? "" : client5.getMobileNo() + " ");
-				page.setClient5prod3(client5.getName());
-				Client client6 = products3.get(i - 1);
-				phone3 = phone3 + (StringUtils.isEmpty(client6.getMobileNo()) ? "" : client6.getMobileNo() + " ");
-				page.setClient6prod3(client6.getName());
-				Client client7 = products3.get(i);
-				phone3 = phone3 + (StringUtils.isEmpty(client7.getMobileNo()) ? "" : client7.getMobileNo() + " ");
-				page.setClient7prod3(client7.getName());
-			} catch (IndexOutOfBoundsException e) {
-			}
-			page.setPhone3(phone3);
-			page.setPhone4(phone3);
-
-			pages.addPage(page);
-		}
+		low = high + 1;
+		high = low + (clientsToPage.size() / 7);
+		pages.addPage(generatePage());
 		return pages;
 	}
 }

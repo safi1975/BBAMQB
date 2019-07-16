@@ -31,6 +31,47 @@ public class Page {
 	private String client6prod3 = "";
 	private String client7prod3 = "";
 	
+	private String client1prod4 = "";
+	private String client2prod4 = "";
+	private String client3prod4 = "";
+	private String client4prod4 = "";
+	private String client5prod4 = "";
+	private String client6prod4 = "";
+	private String client7prod4 = "";
+	private String nos = "";
+	
+	public String getNos() {
+		return nos;
+	}
+	
+	public void setNos(String nos) {
+		this.nos = nos;
+	}
+	
+	public String getPhone1() {
+		return phone1;
+	}
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
+	}
+	public String getPhone2() {
+		return phone2;
+	}
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+	public String getPhone3() {
+		return phone3;
+	}
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
+	}
+	public String getPhone4() {
+		return phone4;
+	}
+	public void setPhone4(String phone4) {
+		this.phone4 = phone4;
+	}
 	public String getClient1prod1() {
 		return client1prod1;
 	}
@@ -157,29 +198,47 @@ public class Page {
 	public void setClient7prod3(String client7prod3) {
 		this.client7prod3 = client7prod3;
 	}
-	public String getPhone1() {
-		return phone1;
+	public String getClient1prod4() {
+		return client1prod4;
 	}
-	public void setPhone1(String phone1) {
-		this.phone1 = phone1;
+	public void setClient1prod4(String client1prod4) {
+		this.client1prod4 = client1prod4;
 	}
-	public String getPhone2() {
-		return phone2;
+	public String getClient2prod4() {
+		return client2prod4;
 	}
-	public void setPhone2(String phone2) {
-		this.phone2 = phone2;
+	public void setClient2prod4(String client2prod4) {
+		this.client2prod4 = client2prod4;
 	}
-	public String getPhone3() {
-		return phone3;
+	public String getClient3prod4() {
+		return client3prod4;
 	}
-	public void setPhone3(String phone3) {
-		this.phone3 = phone3;
+	public void setClient3prod4(String client3prod4) {
+		this.client3prod4 = client3prod4;
 	}
-	public String getPhone4() {
-		return phone4;
+	public String getClient4prod4() {
+		return client4prod4;
 	}
-	public void setPhone4(String phone4) {
-		this.phone4 = phone4;
+	public void setClient4prod4(String client4prod4) {
+		this.client4prod4 = client4prod4;
 	}
-
+	public String getClient5prod4() {
+		return client5prod4;
+	}
+	public void setClient5prod4(String client5prod4) {
+		this.client5prod4 = client5prod4;
+	}
+	public String getClient6prod4() {
+		return client6prod4;
+	}
+	public void setClient6prod4(String client6prod4) {
+		this.client6prod4 = client6prod4;
+	}
+	public String getClient7prod4() {
+		return client7prod4;
+	}
+	public void setClient7prod4(String client7prod4) {
+		this.client7prod4 = client7prod4;
+	}
+	
 }

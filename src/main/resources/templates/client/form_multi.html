@@ -16,19 +16,19 @@
                                 <div class="form-row col-md-8" th:each="client, iter : *{clients}">
 
                                     <input type="hidden" th:field="*{clients[__${iter.index}__].id}" class="form-control form-control-lg">
-                                    <div class="col-md-1 col md-form form-lg">
+                                    <div class="col-12 col-md-1 col md-form form-lg">
                                         <label th:text="${iter.index + 1}"></label>
                                     </div>
-                                    <div class="col md-form form-lg">
+                                    <div class="col col-12 col-md-5 md-form form-lg">
                                         <input th:if="${iter.index == 0}"  type="text" th:field="*{clients[__${iter.index}__].name}" class="form-control form-control-lg" th:autofocus="true">
                                         <input th:unless="${iter.index == 0}"  type="text" th:field="*{clients[__${iter.index}__].name}" class="form-control form-control-lg">
                                         <label for="name">Name</label>
                                     </div>
-                                    <div class="col md-form form-lg">
+                                    <div class="col col-12 col-md-3 md-form form-lg">
                                         <input type="text" th:field="*{clients[__${iter.index}__].mobileNo}" class="form-control form-control-lg">
                                         <label for="phone">Mobile No</label>
                                     </div>
-                                    <div class="col md-form form-lg">
+                                    <div class="col col-12 col-md-3 md-form form-lg">
                                         <select class="browser-default custom-select custom-select-lg" th:field="*{clients[__${iter.index}__].product}">
                                             <option th:value="${T(com.app.dataentry.constants.Product).PRODUCT_1}" th:text="${T(com.app.dataentry.constants.Product).PRODUCT_1}">1</option>
                                             <option th:value="${T(com.app.dataentry.constants.Product).PRODUCT_2}" th:text="${T(com.app.dataentry.constants.Product).PRODUCT_2}">2</option>
