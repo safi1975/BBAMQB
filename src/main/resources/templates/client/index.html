@@ -39,6 +39,9 @@
                                     <a id="footer-link-edit" th:href="@{'/client/edit/' + ${client.id}}">
                                         <i class="fa fa-pencil mr-4"> </i>
                                     </a>
+                                    <a id="footer-link-delete" th:href="@{'/client/delete/' + ${client.id}}">
+                                        <i class="fa fa-trash mr-4"> </i>
+                                    </a>
                                 </td>
                             </tr>
                         </th:block>
@@ -53,6 +56,7 @@
             </div>
         </div>
     </div>
+    <div th:replace="fragments/confirm_modal :: frag('a', 'a')" />
 </main>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

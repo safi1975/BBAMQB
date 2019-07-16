@@ -11,7 +11,7 @@ public interface UserService {
 
     User saveUser(UserDto userDto);
 
-    boolean deleteClient(Long id);
+    boolean deleteUser(Long id);
 
     UserDto getUser(Long id);
 

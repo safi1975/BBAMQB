@@ -20,7 +20,7 @@ public class ClientController {
 	@Autowired
 	ClientService clientService;
 
-	@Secured(value = { Role.ADMIN, Role.OPERATOR })
+	@Secured(value = { Role.ADMIN })
 	@GetMapping("/client")
 	public String client(Model model) {
 		model.addAttribute("clients", clientService.getClients());
@@ -62,5 +62,12 @@ public class ClientController {
 		}
 		model.addAttribute("client", clientDto);
 		return "client/form";
+	}
+
+	@Secured(value = { Role.ADMIN })
+	@GetMapping("/client/delete/{id}")
+	public String delete(@PathVariable Long id) {
+		clientService.deleteClient(id);
+		return "redirect:/client";
 	}
 }

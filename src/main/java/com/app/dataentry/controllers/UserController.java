@@ -42,4 +42,11 @@ public class UserController {
         model.addAttribute("user", userDto);
         return "user/form";
     }
+
+    @Secured(value = { Role.ADMIN })
+    @GetMapping("/user/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "redirect:/user";
+    }
 }
