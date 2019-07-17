@@ -15,4 +15,8 @@ public interface UserService {
 
     UserDto getUser(Long id);
 
+	User getUserByName(String name);
+
+	User saveUser(User entity);
+
 }

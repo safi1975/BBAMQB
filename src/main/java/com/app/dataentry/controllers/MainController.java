@@ -10,14 +10,25 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.app.dataentry.constants.Role;
+import com.app.dataentry.domain.UserDto;
+import com.app.dataentry.model.User;
 import com.app.dataentry.services.ClientService;
 import com.app.dataentry.services.ReportService;
+import com.app.dataentry.services.SmsService;
+import com.app.dataentry.services.UserService;
 
 @Controller
 public class MainController {
@@ -27,6 +38,18 @@ public class MainController {
 	
 	@Autowired
 	ClientService clientService;
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	UserDetailsService userDetailsService;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	SmsService smsService;
 	
     @GetMapping("/")
     public String main(Model model) {
@@ -39,7 +62,10 @@ public class MainController {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(Model model, @RequestParam(value="error",required=false) boolean hasError) {
+    	if (hasError) {
+    		model.addAttribute("errorMsg", "Login failed");
+    	}
         return "login_page";
     }
     
@@ -62,4 +88,26 @@ public class MainController {
         }
         return false;
     }
+    
+    @ResponseBody
+    @PostMapping(value="/smscode", produces= MediaType.TEXT_PLAIN_VALUE)
+    public String smscode(@ModelAttribute UserDto userDto) {
+    	UserDetails userDetails;
+    	try {
+    		userDetails = userDetailsService.loadUserByUsername(userDto.getName());
+		} catch (UsernameNotFoundException e) {
+			userDetails = null;
+		}
+    	
+    	if (userDetails == null || !bCryptPasswordEncoder.matches(userDto.getPassword(), userDetails.getPassword())) {
+    		return "Bad login/password";
+    	}
+    	
+    	User user = userService.getUserByName(userDto.getName());
+    	String code = smsService.generateCode();
+    	user.setCode(code);
+    	userService.saveUser(user);
+    	
+    	return smsService.sendSms(user.getMobileNo(), code);
+    }   
 }

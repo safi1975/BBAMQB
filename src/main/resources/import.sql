@@ -9,6 +9,7 @@ create table `app_user`
   `password` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
   `mobile_no` varchar(255),
+  `code` varchar(8) DEFAULT NULL,
   `enabled` int NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 );
@@ -30,8 +31,8 @@ create table `client`
   PRIMARY KEY (`id`)
 );
 
-INSERT INTO app_user (id, name, password, role, enabled) VALUES (1, 'pyra', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_ADMIN', true);
-INSERT INTO app_user (id, name, password, role, enabled) VALUES (3, 'oper', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_OPERATOR', true);
+INSERT INTO app_user (id, name, password, role, enabled, mobile_no) VALUES (1, 'pyra', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_ADMIN', true, '9870057600');
+INSERT INTO app_user (id, name, password, role, enabled, mobile_no) VALUES (3, 'oper', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_OPERATOR', true, '9870057600');
 
 --INSERT INTO client (id, name, mobile_no, product) VALUES (1, 'Luis Mckenna', '134', 'Product 1');
 --INSERT INTO client (id, name, mobile_no, product) VALUES (2, 'Jae Whittington', '555', 'Product 1');

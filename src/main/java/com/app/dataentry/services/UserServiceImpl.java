@@ -45,6 +45,12 @@ public class UserServiceImpl implements UserService {
         }
         return userRepository.save(entity);
     }
+    
+    @Override
+    @Transactional
+    public User saveUser(User entity) {
+        return userRepository.save(entity);
+    }
 
     @Override
     @Transactional
@@ -61,5 +67,10 @@ public class UserServiceImpl implements UserService {
     public UserDto getUser(Long id) {
         Optional<User> user = userRepository.findById(id);
         return new UserDto(user.orElse(new User()));
+    }
+    
+    @Override
+    public User getUserByName(String name) {
+    	return userRepository.findByName(name);
     }
 }

@@ -22,10 +22,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+		// hak to have username:code
 		com.app.dataentry.model.User userEntity = userRepository.findByName(username);
-		System.out.println(userRepository.count());
 		if (userEntity == null) {
-			throw new UsernameNotFoundException(null);
+			throw new UsernameNotFoundException("Username or password incorrect");
 		}
 		List<GrantedAuthority> roles = new ArrayList<>();
 		roles.add(new SimpleGrantedAuthority(userEntity.getRole()));
