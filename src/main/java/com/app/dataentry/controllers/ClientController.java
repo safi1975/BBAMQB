@@ -1,5 +1,7 @@
 package com.app.dataentry.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
@@ -8,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,7 +54,11 @@ public class ClientController {
 	
 	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@PostMapping("/client_multi")
-	public String saveMulti(Model model, @ModelAttribute(name = "clients") ClientsDto clientsDto) {
+	public String saveMulti(Model model, @Valid @ModelAttribute(name = "clientsDto") ClientsDto clientsDto, BindingResult result) {
+		if (result.hasErrors()) {
+			model.addAttribute("clientsDto", clientsDto);
+			return "client/form_multi";
+		}
 		for (ClientDto clientDto: clientsDto.getClients()) {
 			if (StringUtils.isEmpty(clientDto.getName())) {
 				continue;
@@ -66,14 +73,18 @@ public class ClientController {
 	
 	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@PostMapping("/client")
-	public String save(Model model, @ModelAttribute(name = "client") ClientDto clientDto) {
+	public String save(Model model, @Valid @ModelAttribute(name = "client") ClientDto clientDto, BindingResult result) {
+		model.addAttribute("client", clientDto);
+		if (result.hasErrors()) {
+			return "client/form";
+		}
 		if (clientService.saveClient(clientDto) != null) {
 			if (isOperator()) {
 				return "redirect:/";
 			}
 			return "redirect:/client";
 		}
-		model.addAttribute("client", clientDto);
+		
 		return "client/form";
 	}
 

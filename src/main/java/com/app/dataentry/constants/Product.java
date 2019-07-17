@@ -2,7 +2,7 @@ package com.app.dataentry.constants;
 
 public class Product {
 	
-	public static final String PRODUCT_1 = "Product 1";
-	public static final String PRODUCT_2 = "Product 2";
-	public static final String PRODUCT_3 = "Product 3";
+	public static final String PRODUCT_1 = "Hissa";
+	public static final String PRODUCT_2 = "Aqeeqa Girl";
+	public static final String PRODUCT_3 = "Aqeeqa Boy";
 }

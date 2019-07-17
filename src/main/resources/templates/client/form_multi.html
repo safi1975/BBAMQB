@@ -26,6 +26,7 @@
                                     </div>
                                     <div class="col col-12 col-md-3 md-form form-lg">
                                         <input type="text" th:field="*{clients[__${iter.index}__].mobileNo}" class="form-control form-control-lg">
+                                        <span  class="text-danger" th:if="${#fields.hasErrors('clients[__${iter.index}__].mobileNo')}" th:errors="*{clients[__${iter.index}__].mobileNo}">Name Error</span>
                                         <label for="phone">Mobile No</label>
                                     </div>
                                     <div class="col col-12 col-md-3 md-form form-lg">

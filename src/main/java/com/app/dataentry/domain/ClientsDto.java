@@ -3,8 +3,11 @@ package com.app.dataentry.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientsDto {
+import javax.validation.Valid;
 
+public class ClientsDto {
+	
+	@Valid
     private List<ClientDto> clients = new ArrayList<>();
 
     public List<ClientDto> getClients() {
