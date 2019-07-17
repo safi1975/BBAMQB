@@ -12,6 +12,10 @@
             </div>
             <div class="card-body">
 				<div class="row justify-content-md-center">
+                    <div  class ="col-12">
+                        <h3 th:text="${count}">Counter</h3>
+                    </div>
+
                     <div class="col-md-4">
 						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/client}">Clients</a>
 						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/report}">Generate report</a>

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +30,11 @@ public class MainController {
 	
     @GetMapping("/")
     public String main(Model model) {
+        if (isOperator()) {
+            model.addAttribute("count", "Clients entered by you: " + clientService.operatorCount());
+        } else {
+            model.addAttribute("count", "Groups in system: " + clientService.groupsCount());
+        }
        return "index";
     }
 
@@ -41,5 +49,17 @@ public class MainController {
     public byte[] report(Model model, HttpServletResponse response) {
     	ByteArrayOutputStream output = reportService.generateReport(clientService.getPages());
     	return output.toByteArray();
+    }
+
+    private boolean isOperator() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            for (GrantedAuthority ga : authentication.getAuthorities()) {
+                if (ga.getAuthority().equals(Role.OPERATOR)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

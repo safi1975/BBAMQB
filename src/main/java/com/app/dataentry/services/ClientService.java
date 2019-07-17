@@ -17,4 +17,8 @@ public interface ClientService {
 	ClientDto getClient(Long id);
 	
 	PageList getPages();
+
+	long groupsCount();
+
+	long operatorCount();
 }

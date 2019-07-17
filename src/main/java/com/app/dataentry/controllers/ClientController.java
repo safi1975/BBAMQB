@@ -2,6 +2,9 @@ package com.app.dataentry.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -55,6 +58,9 @@ public class ClientController {
 			}
 			clientService.saveClient(clientDto);
 		}
+		if (isOperator())  {
+			return "redirect:/";
+		}
 		return "redirect:/client";
 	}
 	
@@ -62,10 +68,25 @@ public class ClientController {
 	@PostMapping("/client")
 	public String save(Model model, @ModelAttribute(name = "client") ClientDto clientDto) {
 		if (clientService.saveClient(clientDto) != null) {
+			if (isOperator()) {
+				return "redirect:/";
+			}
 			return "redirect:/client";
 		}
 		model.addAttribute("client", clientDto);
 		return "client/form";
+	}
+
+	private boolean isOperator() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication != null) {
+			for (GrantedAuthority ga : authentication.getAuthorities()) {
+				if (ga.getAuthority().equals(Role.OPERATOR)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	@Secured(value = { Role.ADMIN })

@@ -25,6 +25,8 @@
                             </th>
                             <th class="th-sm">Product
                             </th>
+                            <th class="th-sm">Created By
+                            </th>
                             <th class="th-sm">Operations
                             </th>
                         </tr>
@@ -35,6 +37,7 @@
                                 <td th:text="${client.name}">Name</td>
                                 <td th:text="${client.mobileNo}">Mobile No</td>
                                 <td th:text="${client.product}">Product</td>
+                                <td th:text="${client.createdBy}">Created By</td>
                                 <td>
                                     <a id="footer-link-edit" th:href="@{'/client/edit/' + ${client.id}}">
                                         <i class="fa fa-pencil mr-4"> </i>

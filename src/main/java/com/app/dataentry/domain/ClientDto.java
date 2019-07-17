@@ -10,6 +10,8 @@ public class ClientDto implements BaseDto<Client> {
     private String mobileNo;
     private String product;
 
+    private String createdBy;
+
 	public Long getId() {
         return id;
     }
@@ -42,6 +44,14 @@ public class ClientDto implements BaseDto<Client> {
 		this.product = product;
 	}
 
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
     public ClientDto() {
 
     }
@@ -58,6 +68,7 @@ public class ClientDto implements BaseDto<Client> {
         name = entity.getName();
         mobileNo = entity.getMobileNo();
         product = entity.getProduct();
+        createdBy = entity.getCreatedBy();
         return this;
     }
 
