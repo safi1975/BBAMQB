@@ -35,6 +35,16 @@ public class ClientServiceImpl implements ClientService {
         }
         return clients;
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<ClientDto> getOperatorClients() {
+        List<ClientDto> clients = new ArrayList<>();
+        for (Client c : clientRepository.findAllByCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName())) {
+            clients.add(new ClientDto(c));
+        }
+        return clients;
+    }
 
     LinkedList<Client> clientsToPage = new LinkedList<>();
     int low = 0;

@@ -21,4 +21,6 @@ public interface ClientService {
 	long groupsCount();
 
 	long operatorCount();
+
+	List<ClientDto> getOperatorClients();
 }

@@ -34,6 +34,13 @@ public class ClientController {
 		model.addAttribute("clients", clientService.getClients());
 		return "client/index";
 	}
+	
+	@Secured(value = { Role.OPERATOR })
+	@GetMapping("/client_oper")
+	public String clientForOperator(Model model) {
+		model.addAttribute("clients", clientService.getOperatorClients());
+		return "client/index_oper";
+	}
 
 	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@GetMapping("/client/edit/{id}")
@@ -88,7 +95,12 @@ public class ClientController {
 			if (isOperator()) {
 				redirectAttributes.addFlashAttribute("notyfyShow", true);
 				redirectAttributes.addFlashAttribute("notyfyType", "success");
-				redirectAttributes.addFlashAttribute("notyfyMsg", "Client added");
+				if (clientDto.getId() == null) {
+					redirectAttributes.addFlashAttribute("notyfyMsg", "Client added");
+				} else {
+					redirectAttributes.addFlashAttribute("notyfyMsg", "Client edited");
+				}
+				
 				return "redirect:/";
 			}
 			return "redirect:/client";
@@ -109,10 +121,18 @@ public class ClientController {
 		return false;
 	}
 
-	@Secured(value = { Role.ADMIN })
+	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@GetMapping("/client/delete/{id}")
-	public String delete(@PathVariable Long id) {
+	public String delete(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		clientService.deleteClient(id);
-		return "redirect:/client";
+		redirectAttributes.addFlashAttribute("notyfyShow", true);
+		redirectAttributes.addFlashAttribute("notyfyType", "success");
+		redirectAttributes.addFlashAttribute("notyfyMsg", "Client removed");
+		if (isOperator()) {
+			return "redirect:/client_oper";
+		} else {
+			return "redirect:/client";
+		}
+		
 	}
 }
