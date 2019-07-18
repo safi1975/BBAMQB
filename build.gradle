@@ -38,6 +38,7 @@ dependencies {
 
     compile("org.hibernate:hibernate-c3p0:5.3.7.Final")
     compile("com.h2database:h2")
+    compile ('org.postgresql:postgresql:42.2.1')
     
     compile("net.sf.jasperreports:jasperreports:6.9.0")
     // tag::actuator[]
