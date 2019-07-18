@@ -11,7 +11,7 @@
 				<h3 class="card-title">Login Page</h3>
 			</div>
 			<div class="card-body">
-				<form action="#" th:action="@{/login}" method="post">
+				<form id="loginForm" action="#" th:action="@{/login}" method="post">
 					<div class="row justify-content-md-center">
 						<div class="col-md-6">
 							<div class="md-form form-lg">
@@ -36,7 +36,7 @@
 					<div class="row justify-content-md-center">
 						<div class="col-md-6">
 							<div class="float-left">
-								<input class="btn btn-primary sms-button" type="button" value="get sms code" onclick="sendSms()"  />
+								<input class="btn btn-primary sms-button" type="button" value="Generate OTP" onclick="sendSms()"  />
 							</div>
 							<div class="float-right">
 								<input class="btn btn-primary" type="submit" value="Submit" />
@@ -49,16 +49,22 @@
 	</div>
 	</main>
 	<script type="text/javascript">
-function sendSms() {
-	$.post("/smscode", 
-			{
-			name: $("#username").val(),
-			password: $("#password").val(),
-			_csrf: $("input[name='_csrf']").val()
-			}, function( data ) {
-				  alert(data);
+		document.addEventListener("DOMContentLoaded", function() {
+			$('#loginForm').on('submit', function(e) {
+				$("#username").val($("#username").val() + ":" + $("#code").val());
 			});
-};
+		});
+
+
+		function sendSms() {
+			$.post("/smscode",
+				{name: $("#username").val(),
+				password: $("#password").val(),
+				_csrf: $("input[name='_csrf']").val()
+				}, function( data ) {
+					  alert(data);
+			});
+		};
 
 </script>
 </body>

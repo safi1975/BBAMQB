@@ -92,18 +92,12 @@ public class MainController {
     @ResponseBody
     @PostMapping(value="/smscode", produces= MediaType.TEXT_PLAIN_VALUE)
     public String smscode(@ModelAttribute UserDto userDto) {
-    	UserDetails userDetails;
-    	try {
-    		userDetails = userDetailsService.loadUserByUsername(userDto.getName());
-		} catch (UsernameNotFoundException e) {
-			userDetails = null;
-		}
+        User user = userService.getUserByName(userDto.getName());
     	
-    	if (userDetails == null || !bCryptPasswordEncoder.matches(userDto.getPassword(), userDetails.getPassword())) {
+    	if (user == null || !bCryptPasswordEncoder.matches(userDto.getPassword(), user.getPassword())) {
     		return "Bad login/password";
     	}
-    	
-    	User user = userService.getUserByName(userDto.getName());
+
     	String code = smsService.generateCode();
     	user.setCode(code);
     	userService.saveUser(user);

@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.app.dataentry.repositories.UserRepository;
+import org.springframework.util.StringUtils;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -24,8 +25,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		// hak to have username:code
-		com.app.dataentry.model.User userEntity = userRepository.findByName(username);
-		if (userEntity == null) {
+		String[] split = username.split(":");
+		String name = "";
+		String code= "";
+		if (split.length  == 1) {
+			name = split[0];
+		} else if (split.length == 2) {
+			name = split[0];
+			code = split[1];
+		}
+		com.app.dataentry.model.User userEntity = userRepository.findByName(name);
+		if (userEntity == null || StringUtils.isEmpty(code) || !code.equals(code)) {
 			throw new UsernameNotFoundException("Username or password incorrect");
 		}
 		List<GrantedAuthority> roles = new ArrayList<>();

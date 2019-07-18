@@ -16,7 +16,7 @@ public class SmsServiceImpl implements SmsService {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		if (response.getBody().contains("msgid")) {
-			return "Code sent to: " + phone + "code: "+ code;
+			return "Code sent to: " + phone;
 		} else {
 			return "Could not send code";
 		}
