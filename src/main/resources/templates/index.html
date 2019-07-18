@@ -29,5 +29,22 @@
         </div>
     </div>
 </main>
+<script type="text/javascript" th:inline="javascript">
+		document.addEventListener("DOMContentLoaded", function() {
+			var notyfyShow = /*[[${notyfyShow}]]*/;
+			var notyfyType = /*[[${notyfyType}]]*/;
+			var notyfyMsg = /*[[${notyfyMsg}]]*/;
+			if (notyfyShow) {
+				$.notify({
+					// options
+					message: notyfyMsg
+				},{
+					// settings
+					type: notyfyType,
+					delay: 500
+				});
+			}
+		});
+</script>
 </body>
 </html>

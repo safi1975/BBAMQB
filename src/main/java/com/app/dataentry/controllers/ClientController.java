@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.dataentry.constants.Role;
 import com.app.dataentry.domain.ClientDto;
@@ -54,18 +55,23 @@ public class ClientController {
 	
 	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@PostMapping("/client_multi")
-	public String saveMulti(Model model, @Valid @ModelAttribute(name = "clientsDto") ClientsDto clientsDto, BindingResult result) {
+	public String saveMulti(Model model, @Valid @ModelAttribute(name = "clientsDto") ClientsDto clientsDto, BindingResult result, RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			model.addAttribute("clientsDto", clientsDto);
 			return "client/form_multi";
 		}
+		int count = 0;
 		for (ClientDto clientDto: clientsDto.getClients()) {
 			if (StringUtils.isEmpty(clientDto.getName())) {
 				continue;
 			}
 			clientService.saveClient(clientDto);
+			count++;
 		}
 		if (isOperator())  {
+			redirectAttributes.addFlashAttribute("notyfyShow", true);
+			redirectAttributes.addFlashAttribute("notyfyType", "success");
+			redirectAttributes.addFlashAttribute("notyfyMsg", "Clients added: " + count);
 			return "redirect:/";
 		}
 		return "redirect:/client";
@@ -73,13 +79,16 @@ public class ClientController {
 	
 	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@PostMapping("/client")
-	public String save(Model model, @Valid @ModelAttribute(name = "client") ClientDto clientDto, BindingResult result) {
+	public String save(Model model, @Valid @ModelAttribute(name = "client") ClientDto clientDto, BindingResult result, RedirectAttributes redirectAttributes) {
 		model.addAttribute("client", clientDto);
 		if (result.hasErrors()) {
 			return "client/form";
 		}
 		if (clientService.saveClient(clientDto) != null) {
 			if (isOperator()) {
+				redirectAttributes.addFlashAttribute("notyfyShow", true);
+				redirectAttributes.addFlashAttribute("notyfyType", "success");
+				redirectAttributes.addFlashAttribute("notyfyMsg", "Client added");
 				return "redirect:/";
 			}
 			return "redirect:/client";

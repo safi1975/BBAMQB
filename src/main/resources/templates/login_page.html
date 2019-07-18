@@ -61,7 +61,14 @@
 				password: $("#password").val(),
 				_csrf: $("input[name='_csrf']").val()
 				}, function( data ) {
-					  alert(data);
+					$.notify({
+						// options
+						message: data
+					},{
+						// settings
+						type: 'info',
+						delay: 500
+					});
 			});
 		};
 
