@@ -12,5 +12,6 @@ public interface ClientRepository extends PagingAndSortingRepository<Client, Lon
 	List<Client> findAll();
 	List<Client> findAllByProduct(String product);
 	Long countByCreatedBy(String username);
+	Long countByCreatedByAndProduct(String username, String product);
 	List<Client> findAllByCreatedBy(String username);
 }

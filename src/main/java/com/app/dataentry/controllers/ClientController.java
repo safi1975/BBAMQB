@@ -2,6 +2,7 @@ package com.app.dataentry.controllers;
 
 import javax.validation.Valid;
 
+import com.app.dataentry.constants.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
@@ -73,7 +74,11 @@ public class ClientController {
 				continue;
 			}
 			clientService.saveClient(clientDto);
-			count++;
+			if (clientDto.getProduct().equals(Product.PRODUCT_3)) {
+				count = count +2;
+			} else {
+				count++;
+			}
 		}
 		if (isOperator())  {
 			redirectAttributes.addFlashAttribute("notyfyShow", true);
@@ -96,9 +101,19 @@ public class ClientController {
 				redirectAttributes.addFlashAttribute("notyfyShow", true);
 				redirectAttributes.addFlashAttribute("notyfyType", "success");
 				if (clientDto.getId() == null) {
-					redirectAttributes.addFlashAttribute("notyfyMsg", "Client added");
+					if (clientDto.getProduct().equals(Product.PRODUCT_3)) {
+						redirectAttributes.addFlashAttribute("notyfyMsg", "2 Clients added");
+					} else {
+						redirectAttributes.addFlashAttribute("notyfyMsg", "Client added");
+					}
+
 				} else {
-					redirectAttributes.addFlashAttribute("notyfyMsg", "Client edited");
+					if (clientDto.getProduct().equals(Product.PRODUCT_3)) {
+						redirectAttributes.addFlashAttribute("notyfyMsg", "2 Clients edited");
+					} else {
+						redirectAttributes.addFlashAttribute("notyfyMsg", "Client edited");
+					}
+
 				}
 				
 				return "redirect:/";

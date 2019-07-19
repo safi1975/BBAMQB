@@ -264,7 +264,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public long operatorCount() {
-        return clientRepository.countByCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
+        Long allProduct = clientRepository.countByCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
+        Long additonal = clientRepository.countByCreatedByAndProduct(SecurityContextHolder.getContext().getAuthentication().getName(), Product.PRODUCT_3);
+        return allProduct + additonal;
 
     }
 }
