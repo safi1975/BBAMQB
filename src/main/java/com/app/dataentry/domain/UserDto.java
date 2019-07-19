@@ -76,7 +76,7 @@ public UserDto(User entity) {
 		if (!StringUtils.isEmpty(id)) {
 			entity.setId(id);
         }
-        entity.setName(name);
+        entity.setName(name.toLowerCase());
 		if (!StringUtils.isEmpty(password)) {
 			entity.setPassword(password);
 		}

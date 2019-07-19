@@ -34,7 +34,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			name = split[0];
 			code = split[1];
 		}
-		com.app.dataentry.model.User userEntity = userRepository.findByName(name);
+		com.app.dataentry.model.User userEntity = userRepository.findByName(name.toLowerCase());
 		if (userEntity == null || StringUtils.isEmpty(code) || !code.equals(code)) {
 			throw new UsernameNotFoundException("Username or password incorrect");
 		}
