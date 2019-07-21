@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class Client implements BaseEntity {
 
     @Id
-    @SequenceGenerator(sequenceName = "client_seq", name="client_seq_id", initialValue = 20)
+    @SequenceGenerator(sequenceName = "client_seq", name="client_seq_id", initialValue = 20, allocationSize = 20)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_seq_id")
     @Column(name = "id")
     private Long id;
