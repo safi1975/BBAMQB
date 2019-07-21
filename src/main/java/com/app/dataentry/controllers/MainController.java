@@ -67,12 +67,20 @@ public class MainController {
         return "login_page";
     }
     
-    @Secured(value = { Role.ADMIN, Role.OPERATOR })
+    @Secured(value = { Role.ADMIN})
     @ResponseBody
     @GetMapping(value = "/report", produces = MediaType.APPLICATION_PDF_VALUE)
     public byte[] report(Model model, HttpServletResponse response) {
     	ByteArrayOutputStream output = reportService.generateReport(clientService.getPages());
     	return output.toByteArray();
+    }
+    
+    @Secured(value = { Role.ADMIN})
+    @ResponseBody
+    @GetMapping(value = "/report_csv", produces = "text/csv")
+    public byte[] reportCSV(Model model, HttpServletResponse response) {
+    	response.addHeader("Content-Disposition", "attachment; filename=report.csv");
+    	return reportService.generateReportCSV(clientService.getPages());
     }
 
     private boolean isOperator() {

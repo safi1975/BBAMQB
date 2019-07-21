@@ -19,6 +19,7 @@
                     <div class="col-md-4">
 						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/client}">Clients</a>
 						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/report}">Generate report</a>
+						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/report_csv}">Generate CSV</a>
 						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/user}">Manage Users</a>
 						<a sec:authorize="hasRole('ROLE_OPERATOR')" class="btn btn-primary w-100" th:href="@{/client/edit/0}">Single Entry</a>
 						<a sec:authorize="hasRole('ROLE_OPERATOR')" class="btn btn-primary w-100" th:href="@{/client_multi}">7 Name Entry</a>
