@@ -52,18 +52,10 @@ public class ReportServiceImpl implements ReportService {
 		
 		for (int i = 0; pagesArray.size() > i; i++) {
 			Page page = pagesArray.get(i);
-			if (!StringUtils.isEmpty(page.getPhone1())) {
-				rows.put(String.valueOf(i+1), page.getPhone1());
-			}
-			if (!StringUtils.isEmpty(page.getPhone2())) {
-				rows.put(String.valueOf(i+2), page.getPhone2());
-			}
-			if (!StringUtils.isEmpty(page.getPhone3())) {
-				rows.put(String.valueOf(i+3), page.getPhone3());
-			}
-			if (!StringUtils.isEmpty(page.getPhone4())) {
-				rows.put(String.valueOf(i+4), page.getPhone4());
-			}
+				rows.put(String.valueOf(i*4+1), page.getPhone1());
+				rows.put(String.valueOf(i*4+2), page.getPhone2());
+				rows.put(String.valueOf(i*4+3), page.getPhone3());
+				rows.put(String.valueOf(i*4+4), page.getPhone4());
 		}
 		
 		try (CSVPrinter printer = new CSVPrinter(buffer, CSVFormat.DEFAULT
