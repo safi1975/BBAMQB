@@ -13,8 +13,8 @@ import javax.persistence.Table;
 public class User implements BaseEntity {
 	
 	@Id
-    //@SequenceGenerator(sequenceName = "app_user_seq", name="app_user_seq_id", initialValue = 20, allocationSize = 20)
-    @GeneratedValue(strategy = GenerationType.AUTO) //, generator = "app_user_seq_id")
+    @SequenceGenerator(sequenceName = "app_user_seq", name="app_user_seq_id", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_user_seq_id")
     @Column(name = "id")
     private Long id;
 

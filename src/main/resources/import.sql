@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS app_user;
 
 
---DROP SEQUENCE IF EXISTS app_user_seq;
---CREATE SEQUENCE
---IF NOT EXISTS app_user_seq START
---WITH 20;
+DROP SEQUENCE IF EXISTS app_user_seq;
+CREATE SEQUENCE
+IF NOT EXISTS app_user_seq START
+WITH 1;
 
 create table app_user
 (
@@ -25,10 +25,10 @@ create table app_user
 );
 
 DROP TABLE IF EXISTS client;
---DROP SEQUENCE IF EXISTS client_seq;
---CREATE SEQUENCE
---IF NOT EXISTS client_seq START
---WITH 20;
+DROP SEQUENCE IF EXISTS client_seq;
+CREATE SEQUENCE
+IF NOT EXISTS client_seq START
+WITH 1;
 
 create table client
 (
