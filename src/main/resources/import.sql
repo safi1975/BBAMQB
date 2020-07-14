@@ -1,62 +1,58 @@
-DROP TABLE IF EXISTS `app_user`;
+DROP TABLE IF EXISTS app_user;
 
-CREATE SEQUENCE
-IF NOT EXISTS app_user_seq START
-WITH 20;
 
-create table `app_user`
+--DROP SEQUENCE IF EXISTS app_user_seq;
+--CREATE SEQUENCE
+--IF NOT EXISTS app_user_seq START
+--WITH 20;
+
+create table app_user
 (
-  `id` int NOT NULL,
-  `name` varchar
+  id int NOT NULL,
+  name varchar
 (255) NOT NULL,
-  `password` varchar
+  password varchar
 (255) NOT NULL,
-  `role` varchar
+  role varchar
 (255) NOT NULL,
-  `mobile_no` varchar
+  mobile_no varchar
 (255),
-  `code` varchar
+  code varchar
 (8) DEFAULT NULL,
-  `enabled` int NOT NULL DEFAULT 1,
+  enabled int NOT NULL DEFAULT 1,
   PRIMARY KEY
-(`id`)
+(id)
 );
 
-DROP TABLE IF EXISTS `client`;
+DROP TABLE IF EXISTS client;
+--DROP SEQUENCE IF EXISTS client_seq;
+--CREATE SEQUENCE
+--IF NOT EXISTS client_seq START
+--WITH 20;
 
-CREATE SEQUENCE
-IF NOT EXISTS client_seq START
-WITH 20;
-
-create table `client`
+create table client
 (
-  `id` int NOT NULL,
-  `name` varchar
+  id int NOT NULL,
+  name varchar
 (255) DEFAULT NULL,
-  `mobile_no` varchar
+  mobile_no varchar
 (255) DEFAULT NULL,
-  `product` varchar
+  product varchar
 (255) DEFAULT NULL,
-  `created_at` TIMESTAMP
+  created_at TIMESTAMP
 (6) DEFAULT NULL,
-  `created_by` varchar
+  created_by varchar
 (255) DEFAULT NULL,
-  `updated_at` TIMESTAMP
+  updated_at TIMESTAMP
 (6) DEFAULT NULL,
-  `updated_by` varchar
+  updated_by varchar
 (255) DEFAULT NULL,
   PRIMARY KEY
-(`id`)
+(id)
 );
 
-INSERT INTO app_user
-  (id, name, password, role, enabled, mobile_no, code)
-VALUES
-  (1, 'pyra', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_ADMIN', true, '', '9999');
-INSERT INTO app_user
-  (id, name, password, role, enabled, mobile_no, code)
-VALUES
-  (3, 'oper', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_OPERATOR', true, '', '9999');
+--INSERT INTO app_user (id, name, password, role, enabled, mobile_no, code) VALUES (1, 'pyra', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_ADMIN', true, '', '9999');
+--INSERT INTO app_user (id, name, password, role, enabled, mobile_no, code) VALUES (3, 'oper', '$2a$10$dn6lNXblW6sTchxRZMxzaOviTb9EikgBWk7vD4Sa5ByzMGeM.U9uq', 'ROLE_OPERATOR', true, '', '9999');
 
 --INSERT INTO client (id, name, mobile_no, product) VALUES (1, 'Luis Mckenna', '134', 'Product 1');
 --INSERT INTO client (id, name, mobile_no, product) VALUES (2, 'Jae Whittington', '555', 'Product 1');
