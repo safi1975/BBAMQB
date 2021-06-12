@@ -12,7 +12,7 @@ public class SmsServiceImpl implements SmsService {
 	
 	@Override
 	public String sendSms(String phone, String code) {
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=bbamqb&mobile[]="+phone+"&message[]=CODE:"+code;
+		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=BBAMQB&mobile[]="+phone+"&message[]=CODE:"+code+"&templateid=1207162306397172384";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		if (response.getBody().contains("msgid")) {
