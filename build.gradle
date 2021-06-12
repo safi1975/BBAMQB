@@ -23,8 +23,9 @@ repositories {
     maven {
         url 'http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/'
     }
-    itext {
-        url 'https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/com/lowagie/itext/'
+
+    maven {
+        url 'https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/'
     }
 }
 
