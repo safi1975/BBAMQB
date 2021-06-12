@@ -40,7 +40,7 @@ dependencies {
     compile("com.h2database:h2")
     compile ('org.postgresql:postgresql:42.2.1')
     
-    compile("net.sf.jasperreports:jasperreports:6.9.0")
+    compile("net.sf.jasperreports:jasperreports:6.1.0")
     compile("org.apache.commons:commons-csv:1.4")
     
     // tag::actuator[]
