@@ -5,7 +5,6 @@ import org.springframework.util.StringUtils;
 import com.app.dataentry.model.Client;
 import com.app.dataentry.validation.SizeOrNull;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ClientDto implements BaseDto<Client> {
@@ -83,7 +82,7 @@ public class ClientDto implements BaseDto<Client> {
 		mobileNo = entity.getMobileNo();
 		product = entity.getProduct();
 		createdBy = entity.getCreatedBy();
-		createdAt = entity.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+		createdAt = entity.getCreatedAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm aa"));
 		return this;
 	}
 

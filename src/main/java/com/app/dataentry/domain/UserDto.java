@@ -2,7 +2,6 @@ package com.app.dataentry.domain;
 
 import org.springframework.util.StringUtils;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import com.app.dataentry.model.User;
@@ -89,7 +88,7 @@ public UserDto(User entity) {
 		role = entity.getRole();
 		mobileNo = entity.getMobileNo();
 		isLoggedIn = entity.getIsLoggedIn();
-		lastLoggedInAt = entity.getLastLoggedInAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+		lastLoggedInAt = entity.getLastLoggedInAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm aa"));
 		return this;
 	}
 
