@@ -18,7 +18,7 @@ create table app_user
   mobile_no varchar
 (255),
 
-  is_logged_in boolean default null,
+  is_logged_in boolean default false,
   last_logged_in_at timestamp default null,
 
   code varchar

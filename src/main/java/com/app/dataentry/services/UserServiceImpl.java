@@ -38,11 +38,6 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> getLoggedInOperators() {
         List<UserDto> loggedInOperators = new ArrayList<>();
         for (User u: userRepository.findAll()) {
-            System.out.println(u.getName());
-            System.out.println(u.getRole());
-            System.out.println(Role.OPERATOR);
-            System.out.print(u.getIsLoggedIn());
-            System.out.print(u.getRole().equals(Role.OPERATOR));
             if (u.getRole().equals(Role.OPERATOR) && u.getIsLoggedIn()) {
                 loggedInOperators.add(new UserDto(u));
             }

@@ -7,7 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.app.dataentry.constants.Role;
 import com.app.dataentry.model.User;
+import com.app.dataentry.repositories.UserRepository;
+import com.app.dataentry.services.SmsService;
 import com.app.dataentry.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,12 @@ public class LoginHandler extends SavedRequestAwareAuthenticationSuccessHandler 
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private SmsService smsService;
     
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
@@ -37,6 +46,14 @@ public class LoginHandler extends SavedRequestAwareAuthenticationSuccessHandler 
                 user.setLastLoggedInAt(LocalDateTime.now());
 
                 if(userService.saveUser(user) != null) {
+
+                    for (User u: userRepository.findAll()) {
+
+                        if (u.getRole().equals(Role.ADMIN)) {
+                            smsService.sendOperatorLoggedInSMS(u.getMobileNo(), user.getName());
+                        }
+                    }
+
                     super.onAuthenticationSuccess(request, response, authentication);
                 }
             }
