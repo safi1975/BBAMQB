@@ -82,7 +82,12 @@ public class ClientDto implements BaseDto<Client> {
 		mobileNo = entity.getMobileNo();
 		product = entity.getProduct();
 		createdBy = entity.getCreatedBy();
-		createdAt = entity.getCreatedAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a"));
+		createdAt = null;
+
+		if (entity.getCreatedAt() != null) {
+			createdAt = entity.getCreatedAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a"));
+		}
+
 		return this;
 	}
 
