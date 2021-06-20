@@ -16,6 +16,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.app.dataentry.handlers.LogoutHandler;
+import com.app.dataentry.handlers.LoginHandler;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -23,6 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private LogoutHandler logoutHandler;
+
+    @Autowired
+    private LoginHandler loginHandler;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -57,10 +66,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/")
+                .successHandler(loginHandler)
                 .failureUrl("/login?error=true")
                 .permitAll()
             .and()
-                .logout()
+                .logout().logoutSuccessHandler(logoutHandler)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login")
                 .permitAll()
