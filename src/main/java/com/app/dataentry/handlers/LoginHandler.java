@@ -13,9 +13,9 @@ import com.app.dataentry.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
-public class LoginHandler implements AuthenticationSuccessHandler {
+public class LoginHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
     @Autowired
     private UserService userService;
@@ -34,7 +34,8 @@ public class LoginHandler implements AuthenticationSuccessHandler {
                 user.setIsLoggedIn(true);
                 user.setLastLoggedInAt(LocalDateTime.now());
 
-                userService.saveUser(user);
+                if(userService.saveUser(user) != null) {
+                    super.onAuthenticationSuccess(request, response, authentication);
+                }
             }
-
 }
