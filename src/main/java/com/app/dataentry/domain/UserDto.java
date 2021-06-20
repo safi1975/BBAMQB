@@ -88,7 +88,7 @@ public UserDto(User entity) {
 		role = entity.getRole();
 		mobileNo = entity.getMobileNo();
 		isLoggedIn = entity.getIsLoggedIn();
-		lastLoggedInAt = entity.getLastLoggedInAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm aa"));
+		lastLoggedInAt = entity.getLastLoggedInAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a"));
 		return this;
 	}
 
