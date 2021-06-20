@@ -22,12 +22,16 @@ import com.app.dataentry.constants.Role;
 import com.app.dataentry.domain.ClientDto;
 import com.app.dataentry.domain.ClientsDto;
 import com.app.dataentry.services.ClientService;
+import com.app.dataentry.services.SmsService;
 
 @Controller
 public class ClientController {
 
 	@Autowired
 	ClientService clientService;
+
+	@Autowired
+	SmsService smsService;
 
 	@Secured(value = { Role.ADMIN })
 	@GetMapping("/client")
@@ -79,6 +83,7 @@ public class ClientController {
 			} else {
 				count++;
 			}
+			smsService.sendClientRecordAddedSMS(clientDto.getMobileNo());
 		}
 		if (isOperator())  {
 			redirectAttributes.addFlashAttribute("notyfyShow", true);
@@ -106,6 +111,7 @@ public class ClientController {
 					} else {
 						redirectAttributes.addFlashAttribute("notyfyMsg", "Client added");
 					}
+					smsService.sendClientRecordAddedSMS(clientDto.getMobileNo());
 
 				} else {
 					if (clientDto.getProduct().equals(Product.PRODUCT_3)) {
