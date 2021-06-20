@@ -21,7 +21,6 @@
                   <th:block th:each="user : ${users}">
                     <tr>
                       <td th:text="${user.name}">Username</td>
-                      <td th:text="${user.isLoggedIn}">Logged In</td>
                       <td th:text="${user.lastLoggedInAt}">
                         Last Logged In At
                       </td>
