@@ -2,6 +2,8 @@ package com.app.dataentry.domain;
 
 import org.springframework.util.StringUtils;
 
+import java.time.LocalDateTime;
+
 import com.app.dataentry.model.User;
 
 public class UserDto implements BaseDto<User> {
@@ -11,6 +13,8 @@ public class UserDto implements BaseDto<User> {
 	private String password; 
 	private String role;
 	private String mobileNo;
+	private Boolean isLoggedIn;
+	private LocalDateTime lastLoggedInAt;
 
 	public Long getId() {
 		return id;
@@ -51,7 +55,23 @@ public class UserDto implements BaseDto<User> {
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
-	
+
+	public void setIsLoggedIn(Boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
+	}
+
+	public Boolean getIsLoggedIn() {
+		return isLoggedIn;
+	}
+
+	public void setLastLoggedInAt(LocalDateTime lastLoggedInAt) {
+		this.lastLoggedInAt = lastLoggedInAt;
+	}
+
+	public LocalDateTime getLastLoggedInAt() {
+		return lastLoggedInAt;
+	}
+
 	public UserDto() {
 		
 	}
@@ -67,6 +87,8 @@ public UserDto(User entity) {
 		password = entity.getPassword();
 		role = entity.getRole();
 		mobileNo = entity.getMobileNo();
+		isLoggedIn = entity.getIsLoggedIn();
+		lastLoggedInAt = entity.getLastLoggedInAt();
 		return this;
 	}
 

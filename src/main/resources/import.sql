@@ -17,6 +17,10 @@ create table app_user
 (255) NOT NULL,
   mobile_no varchar
 (255),
+
+  is_logged_in boolean default null,
+  last_logged_in_at timestamp default null,
+
   code varchar
 (8) DEFAULT NULL,
   enabled int NOT NULL DEFAULT 1,

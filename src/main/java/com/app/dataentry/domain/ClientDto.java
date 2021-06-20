@@ -5,6 +5,8 @@ import org.springframework.util.StringUtils;
 import com.app.dataentry.model.Client;
 import com.app.dataentry.validation.SizeOrNull;
 
+import java.time.LocalDateTime;
+
 public class ClientDto implements BaseDto<Client> {
 
 	private Long id;
@@ -14,6 +16,7 @@ public class ClientDto implements BaseDto<Client> {
 	private String product;
 
 	private String createdBy;
+	private LocalDateTime createdAt;
 
 	public Long getId() {
 		return id;
@@ -55,6 +58,14 @@ public class ClientDto implements BaseDto<Client> {
 		this.createdBy = createdBy;
 	}
 
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
 	public ClientDto() {
 
 	}
@@ -71,6 +82,7 @@ public class ClientDto implements BaseDto<Client> {
 		mobileNo = entity.getMobileNo();
 		product = entity.getProduct();
 		createdBy = entity.getCreatedBy();
+		createdAt = entity.getCreatedAt();
 		return this;
 	}
 

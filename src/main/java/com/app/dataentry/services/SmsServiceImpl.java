@@ -1,7 +1,6 @@
 package com.app.dataentry.services;
 
 import java.util.Random;
-import java.io.*;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,6 @@ public class SmsServiceImpl implements SmsService {
 		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=BBAMQB&mobile[]="+phone+"&message[]=Your OTP to login is "+code+"-BBAMQB&templateid=1207162306397172384";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-		System.out.println(response.getBody());
 		if (response.getBody().contains("msgid")) {
 			return "Code sent to: " + phone;
 		} else {

@@ -9,6 +9,8 @@ public interface UserService {
 
     List<UserDto> getUsers();
 
+    List<UserDto> getLoggedInOperators();
+
     User saveUser(UserDto userDto);
 
     boolean deleteUser(Long id);

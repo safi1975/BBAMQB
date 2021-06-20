@@ -1,5 +1,7 @@
 package com.app.dataentry.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +34,28 @@ public class User implements BaseEntity {
 	
 	@Column(name = "code")
 	private String code;
+
+	@Column(name = "is_logged_in")
+	private Boolean is_logged_in;
+
+	@Column(name = "last_logged_in_at")
+	private LocalDateTime last_logged_in_at;
+
+	public void setIsLoggedIn(boolean is_logged_in) {
+		this.is_logged_in = is_logged_in;
+	}
+
+	public Boolean getIsLoggedIn() {
+		return is_logged_in;
+	}
+
+	public void setLastLoggedInAt(LocalDateTime last_logged_in_at) {
+		this.last_logged_in_at = last_logged_in_at;
+	}
+
+	public LocalDateTime getLastLoggedInAt() {
+		return last_logged_in_at;
+	}
 
 	public String getCode() {
 		return code;

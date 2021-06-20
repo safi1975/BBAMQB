@@ -1,52 +1,94 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
-<head th:replace="fragments/header :: header">
-</head>
-<body>
-<main>
-    <div class="container-fluid mt-2">
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+  <head th:replace="fragments/header :: header"> </head>
+  <body>
+    <main>
+      <div class="container-fluid mt-2">
         <div class="card text-center">
-            <div class="card-header">
-                <h3 class="card-title">Data Entry App</h3>
-            </div>
-            <div class="card-body">
-				<div class="row justify-content-md-center">
-                    <div  class ="col-12">
-                        <h3 th:text="${count}">Counter</h3>
-                    </div>
+          <div class="card-header">
+            <h3 class="card-title">Data Entry App</h3>
+          </div>
+          <div class="card-body">
+            <div class="row justify-content-md-center">
+              <div class="col-12">
+                <h3 th:text="${count}">Counter</h3>
+              </div>
 
-                    <div class="col-md-4">
-						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/client}">Clients</a>
-						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/report}">Generate report</a>
-						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/report_csv}">Generate CSV</a>
-						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary w-100" th:href="@{/user}">Manage Users</a>
-						<a sec:authorize="hasRole('ROLE_OPERATOR')" class="btn btn-primary w-100" th:href="@{/client/edit/0}">Single Entry</a>
-						<a sec:authorize="hasRole('ROLE_OPERATOR')" class="btn btn-primary w-100" th:href="@{/client_multi}">7 Name Entry</a>
-						<a sec:authorize="hasRole('ROLE_OPERATOR')" class="btn btn-primary w-100" th:href="@{/client_oper}">Clients List</a>
-						<a class="btn btn-light w-100" th:href="@{/logout}">Logout</a>
-                    </div>
-                </div>
+              <div class="col-md-4">
+                <a
+                  sec:authorize="hasRole('ROLE_ADMIN')"
+                  class="btn btn-primary w-100"
+                  th:href="@{/client}"
+                  >Clients</a
+                >
+                <a
+                  sec:authorize="hasRole('ROLE_ADMIN')"
+                  class="btn btn-primary w-100"
+                  th:href="@{/report}"
+                  >Generate report</a
+                >
+                <a
+                  sec:authorize="hasRole('ROLE_ADMIN')"
+                  class="btn btn-primary w-100"
+                  th:href="@{/report_csv}"
+                  >Generate CSV</a
+                >
+                <a
+                  sec:authorize="hasRole('ROLE_ADMIN')"
+                  class="btn btn-primary w-100"
+                  th:href="@{/user}"
+                  >Manage Users</a
+                >
+                <a
+                  sec:authorize="hasRole('ROLE_ADMIN')"
+                  class="btn btn-primary w-100"
+                  th:href="@{/user-logged-in}"
+                  >Logged In Users</a
+                >
+                <a
+                  sec:authorize="hasRole('ROLE_OPERATOR')"
+                  class="btn btn-primary w-100"
+                  th:href="@{/client/edit/0}"
+                  >Single Entry</a
+                >
+                <a
+                  sec:authorize="hasRole('ROLE_OPERATOR')"
+                  class="btn btn-primary w-100"
+                  th:href="@{/client_multi}"
+                  >7 Name Entry</a
+                >
+                <a
+                  sec:authorize="hasRole('ROLE_OPERATOR')"
+                  class="btn btn-primary w-100"
+                  th:href="@{/client_oper}"
+                  >Clients List</a
+                >
+                <a class="btn btn-light w-100" th:href="@{/logout}">Logout</a>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</main>
-<script type="text/javascript" th:inline="javascript">
-		document.addEventListener("DOMContentLoaded", function() {
-			var notyfyShow = /*[[${notyfyShow}]]*/;
-			var notyfyType = /*[[${notyfyType}]]*/;
-			var notyfyMsg = /*[[${notyfyMsg}]]*/;
-			if (notyfyShow) {
-				$.notify({
-					// options
-					message: notyfyMsg
-				},{
-					// settings
-					type: notyfyType,
-					delay: 500
-				});
-			}
-		});
-</script>
-</body>
+      </div>
+    </main>
+    <script type="text/javascript" th:inline="javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+      	var notyfyShow = /*[[${notyfyShow}]]*/;
+      	var notyfyType = /*[[${notyfyType}]]*/;
+      	var notyfyMsg = /*[[${notyfyMsg}]]*/;
+      	if (notyfyShow) {
+      		$.notify({
+      			// options
+      			message: notyfyMsg
+      		},{
+      			// settings
+      			type: notyfyType,
+      			delay: 500
+      		});
+      	}
+      });
+    </script>
+  </body>
 </html>

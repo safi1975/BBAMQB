@@ -27,6 +27,13 @@ public class UserController {
     }
 
     @Secured(value = { Role.ADMIN })
+    @GetMapping("/user-logged-in")
+    public String user(Model model) {
+        model.addAttribute("users", userService.getLoggedInOperators());
+        return "user/user_logged_in";
+    }
+
+    @Secured(value = { Role.ADMIN })
     @GetMapping("/user/edit/{id}")
     public String edit(Model model, @PathVariable Long id) {
         model.addAttribute("user", userService.getUser(id));

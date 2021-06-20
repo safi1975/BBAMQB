@@ -1,5 +1,6 @@
 package com.app.dataentry.services;
 
+import com.app.dataentry.constants.Role;
 import com.app.dataentry.domain.UserDto;
 import com.app.dataentry.model.User;
 import com.app.dataentry.repositories.UserRepository;
@@ -30,6 +31,18 @@ public class UserServiceImpl implements UserService {
             users.add(new UserDto(u));
         }
         return users;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<UserDto> getLoggedInOperators() {
+        List<UserDto> loggedInOperators = new ArrayList<>();
+        for (User u: userRepository.findAll()) {
+            if (u.getRole() == Role.OPERATOR && u.getIsLoggedIn()) {
+                loggedInOperators.add(new UserDto(u));
+            }
+        }
+        return loggedInOperators;
     }
 
     @Override
