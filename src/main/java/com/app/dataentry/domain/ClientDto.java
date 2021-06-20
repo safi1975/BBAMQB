@@ -6,6 +6,7 @@ import com.app.dataentry.model.Client;
 import com.app.dataentry.validation.SizeOrNull;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ClientDto implements BaseDto<Client> {
 
@@ -16,7 +17,7 @@ public class ClientDto implements BaseDto<Client> {
 	private String product;
 
 	private String createdBy;
-	private LocalDateTime createdAt;
+	private String createdAt;
 
 	public Long getId() {
 		return id;
@@ -58,11 +59,11 @@ public class ClientDto implements BaseDto<Client> {
 		this.createdBy = createdBy;
 	}
 
-	public LocalDateTime getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(LocalDateTime createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 
@@ -82,7 +83,7 @@ public class ClientDto implements BaseDto<Client> {
 		mobileNo = entity.getMobileNo();
 		product = entity.getProduct();
 		createdBy = entity.getCreatedBy();
-		createdAt = entity.getCreatedAt();
+		createdAt = entity.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 		return this;
 	}
 

@@ -3,6 +3,7 @@ package com.app.dataentry.domain;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import com.app.dataentry.model.User;
 
@@ -14,7 +15,7 @@ public class UserDto implements BaseDto<User> {
 	private String role;
 	private String mobileNo;
 	private Boolean isLoggedIn;
-	private LocalDateTime lastLoggedInAt;
+	private String lastLoggedInAt;
 
 	public Long getId() {
 		return id;
@@ -64,11 +65,11 @@ public class UserDto implements BaseDto<User> {
 		return isLoggedIn;
 	}
 
-	public void setLastLoggedInAt(LocalDateTime lastLoggedInAt) {
+	public void setLastLoggedInAt(String lastLoggedInAt) {
 		this.lastLoggedInAt = lastLoggedInAt;
 	}
 
-	public LocalDateTime getLastLoggedInAt() {
+	public String getLastLoggedInAt() {
 		return lastLoggedInAt;
 	}
 
@@ -88,7 +89,7 @@ public UserDto(User entity) {
 		role = entity.getRole();
 		mobileNo = entity.getMobileNo();
 		isLoggedIn = entity.getIsLoggedIn();
-		lastLoggedInAt = entity.getLastLoggedInAt();
+		lastLoggedInAt = entity.getLastLoggedInAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 		return this;
 	}
 
