@@ -2,7 +2,6 @@ package com.app.dataentry.handlers;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +43,7 @@ public class LoginHandler extends SavedRequestAwareAuthenticationSuccessHandler 
                 User user = userService.getUserByName(username);
 
                 user.setIsLoggedIn(true);
-                user.setLastLoggedInAt(LocalDateTime.now(ZoneId.of("Asia/Calcutta")));
+                user.setLastLoggedInAt(LocalDateTime.now());
 
                 if(userService.saveUser(user) != null) {
 

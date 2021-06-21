@@ -5,6 +5,7 @@ import org.springframework.util.StringUtils;
 import com.app.dataentry.model.Client;
 import com.app.dataentry.validation.SizeOrNull;
 
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class ClientDto implements BaseDto<Client> {
@@ -85,7 +86,7 @@ public class ClientDto implements BaseDto<Client> {
 		createdAt = null;
 
 		if (entity.getCreatedAt() != null) {
-			createdAt = entity.getCreatedAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a"));
+			createdAt = entity.getCreatedAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a").withZone(ZoneId.of("Asia/Calcutta")));
 		}
 
 		return this;

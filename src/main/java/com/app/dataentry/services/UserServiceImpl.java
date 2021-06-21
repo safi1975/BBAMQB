@@ -1,10 +1,12 @@
 package com.app.dataentry.services;
 
-import com.app.dataentry.constants.Role;
 import com.app.dataentry.domain.UserDto;
 import com.app.dataentry.model.User;
 import com.app.dataentry.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.session.SessionInformation;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private SessionRegistry sessionRegistry;
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -37,9 +42,12 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public List<UserDto> getLoggedInOperators() {
         List<UserDto> loggedInOperators = new ArrayList<>();
-        for (User u: userRepository.findAll()) {
-            if (u.getRole().equals(Role.OPERATOR) && u.getIsLoggedIn()) {
-                loggedInOperators.add(new UserDto(u));
+
+        for (Object principal : sessionRegistry.getAllPrincipals()) {
+            for (SessionInformation sessionInformation: sessionRegistry.getAllSessions(principal, false)) {
+                UserDetails userDetails = (UserDetails) sessionInformation.getPrincipal();
+                String username = userDetails.getUsername().split(":")[0];
+                loggedInOperators.add(new UserDto(userRepository.findByName(username)));
             }
         }
         return loggedInOperators;

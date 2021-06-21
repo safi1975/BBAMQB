@@ -2,6 +2,7 @@ package com.app.dataentry.domain;
 
 import org.springframework.util.StringUtils;
 
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 import com.app.dataentry.model.User;
@@ -91,7 +92,7 @@ public UserDto(User entity) {
 		lastLoggedInAt = null;
 
 		if (entity.getLastLoggedInAt() != null) {
-			lastLoggedInAt = entity.getLastLoggedInAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a"));
+			lastLoggedInAt = entity.getLastLoggedInAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a").withZone(ZoneId.of("Asia/Calcutta")));
 		}
 
 		return this;
