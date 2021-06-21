@@ -86,7 +86,10 @@ public class ClientDto implements BaseDto<Client> {
 		createdAt = null;
 
 		if (entity.getCreatedAt() != null) {
-			createdAt = entity.getCreatedAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a").withZone(ZoneId.of("Asia/Calcutta")));
+			createdAt = entity.getCreatedAt()
+			.atZone(ZoneId.systemDefault())
+			.withZoneSameInstant(ZoneId.of("Asia/Calcutta"))
+			.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a"));
 		}
 
 		return this;

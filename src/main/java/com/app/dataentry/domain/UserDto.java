@@ -92,7 +92,10 @@ public UserDto(User entity) {
 		lastLoggedInAt = null;
 
 		if (entity.getLastLoggedInAt() != null) {
-			lastLoggedInAt = entity.getLastLoggedInAt().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a").withZone(ZoneId.of("Asia/Calcutta")));
+			lastLoggedInAt = entity.getLastLoggedInAt()
+			.atZone(ZoneId.systemDefault())
+			.withZoneSameInstant(ZoneId.of("Asia/Calcutta"))
+			.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a"));
 		}
 
 		return this;

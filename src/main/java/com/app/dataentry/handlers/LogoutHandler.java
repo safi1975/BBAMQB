@@ -11,6 +11,8 @@ import com.app.dataentry.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.session.SessionInformation;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,9 @@ public class LogoutHandler extends SimpleUrlLogoutSuccessHandler {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SessionRegistry sessionRegistry;
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -31,6 +36,10 @@ public class LogoutHandler extends SimpleUrlLogoutSuccessHandler {
         User user = userService.getUserByName(username);
 
         user.setIsLoggedIn(false);
+
+        for (SessionInformation sessionInformation : sessionRegistry.getAllSessions(authentication.getPrincipal(), false)) {
+            sessionInformation.expireNow();
+        }
 
         if (userService.saveUser(user) != null) {
             super.onLogoutSuccess(request, response, authentication);
