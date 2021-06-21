@@ -14,6 +14,7 @@ import com.app.dataentry.report.Page;
 import com.app.dataentry.report.PageList;
 import com.app.dataentry.repositories.ClientRepository;
 
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -58,7 +59,7 @@ public class ClientServiceImpl implements ClientService {
             Optional<Client> clientFromDb = clientRepository.findById(clientDto.getId());
             if (clientFromDb.isPresent()) {
                 entity.setCreatedBy(clientFromDb.get().getCreatedBy());
-                entity.setCreatedAt(clientFromDb.get().getCreatedAt());
+                entity.setCreatedAt(clientFromDb.get().getCreatedAt().atZone(ZoneId.of("Asia/Calcutta")).toLocalDateTime());
             }
         }
         return clientRepository.save(entity);
