@@ -5,6 +5,8 @@ import com.app.dataentry.domain.UserDto;
 import com.app.dataentry.model.User;
 import com.app.dataentry.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    SessionRegistry sessionRegistry;
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -37,11 +42,20 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public List<UserDto> getLoggedInOperators() {
         List<UserDto> loggedInOperators = new ArrayList<>();
-        for (User u: userRepository.findAll()) {
-            if (u.getRole().equals(Role.OPERATOR) && u.getIsLoggedIn()) {
+
+        for (Object principal: sessionRegistry.getAllPrincipals()) {
+
+            UserDetails userDetails = (UserDetails) principal;
+
+            String username = userDetails.getUsername().split(":")[0];
+
+            User u = userRepository.findByName(username);
+
+            if (u.getRole().equals(Role.OPERATOR)) {
                 loggedInOperators.add(new UserDto(u));
             }
         }
+
         return loggedInOperators;
     }
 
