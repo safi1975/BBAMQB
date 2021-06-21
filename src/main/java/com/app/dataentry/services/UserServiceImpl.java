@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
                 loggedInOperators.add(new UserDto(userRepository.findByName(username)));
             }
         }
+
         return loggedInOperators;
     }
 
