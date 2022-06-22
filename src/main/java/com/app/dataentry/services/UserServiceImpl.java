@@ -41,7 +41,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public List<UserDto> getLoggedInOperators() {
-        List<UserDto> loggedInOperators = new ArrayList<>();
+
+        List<UserDto> loggedInOperators = new ArrayList<UserDto>();
+        // for (User user : userRepository.findByIsLoggedIn(true)) {
+        // loggedInOperators.add(new UserDto(user));
+        // }
 
         for (Object principal : sessionRegistry.getAllPrincipals()) {
             for (SessionInformation sessionInformation : sessionRegistry.getAllSessions(principal, false)) {
