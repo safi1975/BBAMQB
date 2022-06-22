@@ -36,12 +36,13 @@ public class ClientServiceImpl implements ClientService {
         }
         return clients;
     }
-    
+
     @Override
     @Transactional(readOnly = true)
     public List<ClientDto> getOperatorClients() {
         List<ClientDto> clients = new ArrayList<>();
-        for (Client c : clientRepository.findAllByCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName())) {
+        for (Client c : clientRepository
+                .findAllByCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName())) {
             clients.add(new ClientDto(c));
         }
         return clients;
@@ -59,7 +60,8 @@ public class ClientServiceImpl implements ClientService {
             Optional<Client> clientFromDb = clientRepository.findById(clientDto.getId());
             if (clientFromDb.isPresent()) {
                 entity.setCreatedBy(clientFromDb.get().getCreatedBy());
-                entity.setCreatedAt(clientFromDb.get().getCreatedAt().atZone(ZoneId.of("Asia/Calcutta")).toLocalDateTime());
+                entity.setCreatedAt(
+                        clientFromDb.get().getCreatedAt().atZone(ZoneId.of("Asia/Calcutta")).toLocalDateTime());
             }
         }
         return clientRepository.save(entity);
@@ -265,8 +267,10 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public long operatorCount() {
-        Long allProduct = clientRepository.countByCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
-        Long additonal = clientRepository.countByCreatedByAndProduct(SecurityContextHolder.getContext().getAuthentication().getName(), Product.PRODUCT_3);
+        Long allProduct = clientRepository
+                .countByCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
+        Long additonal = clientRepository.countByCreatedByAndProduct(
+                SecurityContextHolder.getContext().getAuthentication().getName(), Product.PRODUCT_3);
         return allProduct + additonal;
 
     }

@@ -11,7 +11,6 @@ import com.app.dataentry.constants.Role;
 import com.app.dataentry.model.User;
 import com.app.dataentry.repositories.UserRepository;
 import com.app.dataentry.services.SmsService;
-import com.app.dataentry.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -23,38 +22,35 @@ import org.springframework.stereotype.Component;
 public class LoginHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private SmsService smsService;
-    
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
-			HttpServletResponse response, Authentication authentication)
-			throws IOException, ServletException {
-                
-                UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            HttpServletResponse response, Authentication authentication)
+            throws IOException, ServletException {
 
-                String username = userDetails.getUsername().split(":")[0];
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-                User user = userService.getUserByName(username);
+        String username = userDetails.getUsername().split(":")[0];
 
-                user.setIsLoggedIn(true);
-                user.setLastLoggedInAt(LocalDateTime.now());
+        User user = userRepository.findByName(username);
 
-                if(userService.saveUser(user) != null) {
+        user.setIsLoggedIn(true);
+        user.setLastLoggedInAt(LocalDateTime.now());
 
-                    for (User u: userRepository.findAll()) {
+        if (userRepository.save(user) != null) {
 
-                        if (u.getRole().equals(Role.ADMIN)) {
-                            smsService.sendOperatorLoggedInSMS(u.getMobileNo(), user.getName());
-                        }
-                    }
+            for (User u : userRepository.findAll()) {
 
-                    super.onAuthenticationSuccess(request, response, authentication);
+                if (u.getRole().equals(Role.ADMIN)) {
+                    smsService.sendOperatorLoggedInSMS(u.getMobileNo(), user.getName());
                 }
             }
+
+            super.onAuthenticationSuccess(request, response, authentication);
+        }
+    }
 }

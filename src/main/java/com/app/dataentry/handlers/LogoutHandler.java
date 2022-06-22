@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.app.dataentry.model.User;
-import com.app.dataentry.services.UserService;
+import com.app.dataentry.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,27 +21,29 @@ import org.springframework.stereotype.Component;
 public class LogoutHandler extends SimpleUrlLogoutSuccessHandler {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @Autowired
     private SessionRegistry sessionRegistry;
 
     @Override
-    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+            throws IOException, ServletException {
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
         String username = userDetails.getUsername().split(":")[0];
 
-        User user = userService.getUserByName(username);
+        User user = userRepository.findByName(username);
 
         user.setIsLoggedIn(false);
 
-        for (SessionInformation sessionInformation : sessionRegistry.getAllSessions(authentication.getPrincipal(), false)) {
+        for (SessionInformation sessionInformation : sessionRegistry.getAllSessions(authentication.getPrincipal(),
+                false)) {
             sessionInformation.expireNow();
         }
 
-        if (userService.saveUser(user) != null) {
+        if (userRepository.save(user) != null) {
             super.onLogoutSuccess(request, response, authentication);
         }
 

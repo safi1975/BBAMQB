@@ -8,10 +8,10 @@ import java.time.format.DateTimeFormatter;
 import com.app.dataentry.model.User;
 
 public class UserDto implements BaseDto<User> {
-	
-    private Long id;
+
+	private Long id;
 	private String name;
-	private String password; 
+	private String password;
 	private String role;
 	private String mobileNo;
 	private Boolean isLoggedIn;
@@ -74,17 +74,17 @@ public class UserDto implements BaseDto<User> {
 	}
 
 	public UserDto() {
-		
+
 	}
-	
-public UserDto(User entity) {
+
+	public UserDto(User entity) {
 		mapFromEntity(entity);
 	}
 
 	@Override
 	public BaseDto<User> mapFromEntity(User entity) {
 		id = entity.getId();
-		name = entity.getName(); 
+		name = entity.getName();
 		password = entity.getPassword();
 		role = entity.getRole();
 		mobileNo = entity.getMobileNo();
@@ -93,9 +93,9 @@ public UserDto(User entity) {
 
 		if (entity.getLastLoggedInAt() != null) {
 			lastLoggedInAt = entity.getLastLoggedInAt()
-			.atZone(ZoneId.systemDefault())
-			.withZoneSameInstant(ZoneId.of("Asia/Calcutta"))
-			.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a"));
+					.atZone(ZoneId.systemDefault())
+					.withZoneSameInstant(ZoneId.of("Asia/Calcutta"))
+					.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh.mm a"));
 		}
 
 		return this;
@@ -106,13 +106,13 @@ public UserDto(User entity) {
 		User entity = new User();
 		if (!StringUtils.isEmpty(id)) {
 			entity.setId(id);
-        }
-        entity.setName(name.toLowerCase());
+		}
+		entity.setName(name.toLowerCase());
 		if (!StringUtils.isEmpty(password)) {
 			entity.setPassword(password);
 		}
-        entity.setRole(role);
-        entity.setMobileNo(mobileNo);
+		entity.setRole(role);
+		entity.setMobileNo(mobileNo);
 		return entity;
 	}
 

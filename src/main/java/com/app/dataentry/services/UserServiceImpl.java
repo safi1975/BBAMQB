@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
         List<UserDto> loggedInOperators = new ArrayList<>();
 
         for (Object principal : sessionRegistry.getAllPrincipals()) {
-            for (SessionInformation sessionInformation: sessionRegistry.getAllSessions(principal, false)) {
+            for (SessionInformation sessionInformation : sessionRegistry.getAllSessions(principal, false)) {
                 UserDetails userDetails = (UserDetails) sessionInformation.getPrincipal();
                 String username = userDetails.getUsername().split(":")[0];
                 loggedInOperators.add(new UserDto(userRepository.findByName(username)));
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
         }
         return userRepository.save(entity);
     }
-    
+
     @Override
     @Transactional
     public User saveUser(User entity) {
@@ -90,9 +90,9 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = userRepository.findById(id);
         return new UserDto(user.orElse(new User()));
     }
-    
+
     @Override
     public User getUserByName(String name) {
-    	return userRepository.findByName(name);
+        return userRepository.findByName(name);
     }
 }

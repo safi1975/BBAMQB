@@ -39,7 +39,7 @@ public class ClientController {
 		model.addAttribute("clients", clientService.getClients());
 		return "client/index";
 	}
-	
+
 	@Secured(value = { Role.OPERATOR })
 	@GetMapping("/client_oper")
 	public String clientForOperator(Model model) {
@@ -64,28 +64,29 @@ public class ClientController {
 		model.addAttribute("clientsDto", clients);
 		return "client/form_multi";
 	}
-	
+
 	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@PostMapping("/client_multi")
-	public String saveMulti(Model model, @Valid @ModelAttribute(name = "clientsDto") ClientsDto clientsDto, BindingResult result, RedirectAttributes redirectAttributes) {
+	public String saveMulti(Model model, @Valid @ModelAttribute(name = "clientsDto") ClientsDto clientsDto,
+			BindingResult result, RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			model.addAttribute("clientsDto", clientsDto);
 			return "client/form_multi";
 		}
 		int count = 0;
-		for (ClientDto clientDto: clientsDto.getClients()) {
+		for (ClientDto clientDto : clientsDto.getClients()) {
 			if (StringUtils.isEmpty(clientDto.getName())) {
 				continue;
 			}
 			clientService.saveClient(clientDto);
 			if (clientDto.getProduct().equals(Product.PRODUCT_3)) {
-				count = count +2;
+				count = count + 2;
 			} else {
 				count++;
 			}
 			smsService.sendClientRecordAddedSMS(clientDto.getMobileNo());
 		}
-		if (isOperator())  {
+		if (isOperator()) {
 			redirectAttributes.addFlashAttribute("notyfyShow", true);
 			redirectAttributes.addFlashAttribute("notyfyType", "success");
 			redirectAttributes.addFlashAttribute("notyfyMsg", "Clients added: " + count);
@@ -93,10 +94,11 @@ public class ClientController {
 		}
 		return "redirect:/client";
 	}
-	
+
 	@Secured(value = { Role.ADMIN, Role.OPERATOR })
 	@PostMapping("/client")
-	public String save(Model model, @Valid @ModelAttribute(name = "client") ClientDto clientDto, BindingResult result, RedirectAttributes redirectAttributes) {
+	public String save(Model model, @Valid @ModelAttribute(name = "client") ClientDto clientDto, BindingResult result,
+			RedirectAttributes redirectAttributes) {
 		model.addAttribute("client", clientDto);
 		if (result.hasErrors()) {
 			return "client/form";
@@ -121,12 +123,12 @@ public class ClientController {
 					}
 
 				}
-				
+
 				return "redirect:/";
 			}
 			return "redirect:/client";
 		}
-		
+
 		return "client/form";
 	}
 
@@ -154,6 +156,6 @@ public class ClientController {
 		} else {
 			return "redirect:/client";
 		}
-		
+
 	}
 }

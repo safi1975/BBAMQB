@@ -6,8 +6,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 public class ClientsDto {
-	
-	@Valid
+
+    @Valid
     private List<ClientDto> clients = new ArrayList<>();
 
     public List<ClientDto> getClients() {

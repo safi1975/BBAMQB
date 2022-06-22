@@ -13,25 +13,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "app_user")
 public class User implements BaseEntity {
-	
-	@Id
-    @SequenceGenerator(sequenceName = "app_user_seq", name="app_user_seq_id", initialValue = 1, allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_user_seq_id")
-    @Column(name = "id")
-    private Long id;
 
-    @Column(name = "name")
-    private String name;
-    
-    @Column(name = "password")
-    private String password;
-    
-    @Column(name = "role")
-    private String role;
+	@Id
+	@SequenceGenerator(sequenceName = "app_user_seq", name = "app_user_seq_id", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_user_seq_id")
+	@Column(name = "id")
+	private Long id;
+
+	@Column(name = "name")
+	private String name;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "role")
+	private String role;
 
 	@Column(name = "mobile_no")
 	private String mobileNo;
-	
+
 	@Column(name = "code")
 	private String code;
 

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class Client implements BaseEntity {
 
     @Id
-    @SequenceGenerator(sequenceName = "client_seq", name="client_seq_id", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(sequenceName = "client_seq", name = "client_seq_id", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_seq_id")
     @Column(name = "id")
     private Long id;
@@ -21,7 +21,7 @@ public class Client implements BaseEntity {
 
     @Column(name = "mobile_no")
     private String mobileNo;
-    
+
     @Column(name = "product")
     private String product;
 
@@ -46,6 +46,7 @@ public class Client implements BaseEntity {
         setCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
         setUpdatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
     }
+
     @PreUpdate
     public void update() {
         setUpdatedAt(LocalDateTime.now());
@@ -107,12 +108,12 @@ public class Client implements BaseEntity {
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
-    
-    public String getProduct() {
-		return product;
-	}
 
-	public void setProduct(String product) {
-		this.product = product;
-	}
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
 }

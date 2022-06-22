@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public SessionRegistry sessionRegistry() {
         return new SessionRegistryImpl();
     }
-    
+
     @Autowired
     DataSource dataSource;
 
@@ -61,28 +61,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
+                .authorizeRequests()
                 .antMatchers(
                         "/js/**",
                         "/css/**",
                         "/img/**",
-                        "/webjars/**").permitAll()
+                        "/webjars/**")
+                .permitAll()
                 .antMatchers(HttpMethod.POST, "/smscode").permitAll()
                 .anyRequest().authenticated()
-            .and()
+                .and()
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/")
                 .successHandler(loginHandler)
                 .failureUrl("/login?error=true")
                 .permitAll()
-            .and()
+                .and()
                 .logout().logoutSuccessHandler(logoutHandler)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login")
                 .permitAll()
-            .and()
-            	.userDetailsService(userDetailsService)
+                .and()
+                .userDetailsService(userDetailsService)
                 .sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry());
     }
 }

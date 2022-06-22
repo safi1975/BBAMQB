@@ -22,24 +22,23 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactory", basePackages = {
-		"com.app.dataentry.repositories" }, transactionManagerRef = "transactionManager" )
+		"com.app.dataentry.repositories" }, transactionManagerRef = "transactionManager")
 public class PersistanceConfig {
-	
+
 	@Value("${datasource.url}")
-	private String url; 
+	private String url;
 	@Value("${datasource.driverClassName}")
-	private String driverClassName; 
+	private String driverClassName;
 	@Value("${datasource.username}")
-	private String username; 
+	private String username;
 	@Value("${datasource.password}")
-	private String password; 
+	private String password;
 	@Value("${datasource.minPoolSize}")
-	private int minPoolSize; 
+	private int minPoolSize;
 	@Value("${datasource.maxPoolSize}")
-	private int maxPoolSize; 
+	private int maxPoolSize;
 	@Value("${datasource.maxIdleTime}")
 	private int maxIdleTime;
-	
 
 	@Bean(name = "dataSource")
 	@Primary

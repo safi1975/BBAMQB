@@ -15,7 +15,7 @@ public interface ClientService {
 	boolean deleteClient(Long id);
 
 	ClientDto getClient(Long id);
-	
+
 	PageList getPages();
 
 	long groupsCount();

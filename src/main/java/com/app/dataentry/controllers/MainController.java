@@ -31,24 +31,24 @@ import com.app.dataentry.services.UserService;
 @Controller
 public class MainController {
 
-	@Autowired
-	ReportService reportService;
-	
-	@Autowired
-	ClientService clientService;
-	
-	@Autowired
-	UserService userService;
-	
-	@Autowired
-	UserDetailsService userDetailsService;
-	
-	@Autowired
-	BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-	@Autowired
-	SmsService smsService;
-	
+    @Autowired
+    ReportService reportService;
+
+    @Autowired
+    ClientService clientService;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    UserDetailsService userDetailsService;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    SmsService smsService;
+
     @GetMapping("/")
     public String main(Model model) {
         if (isOperator()) {
@@ -56,31 +56,31 @@ public class MainController {
         } else {
             model.addAttribute("count", "Groups in system: " + clientService.groupsCount());
         }
-       return "index";
+        return "index";
     }
 
     @GetMapping("/login")
-    public String login(Model model, @RequestParam(value="error",required=false) boolean hasError) {
-    	if (hasError) {
-    		model.addAttribute("errorMsg", "Login failed");
-    	}
+    public String login(Model model, @RequestParam(value = "error", required = false) boolean hasError) {
+        if (hasError) {
+            model.addAttribute("errorMsg", "Login failed");
+        }
         return "login_page";
     }
-    
-    @Secured(value = { Role.ADMIN})
+
+    @Secured(value = { Role.ADMIN })
     @ResponseBody
     @GetMapping(value = "/report", produces = MediaType.APPLICATION_PDF_VALUE)
     public byte[] report(Model model, HttpServletResponse response) {
-    	ByteArrayOutputStream output = reportService.generateReport(clientService.getPages());
-    	return output.toByteArray();
+        ByteArrayOutputStream output = reportService.generateReport(clientService.getPages());
+        return output.toByteArray();
     }
-    
-    @Secured(value = { Role.ADMIN})
+
+    @Secured(value = { Role.ADMIN })
     @ResponseBody
     @GetMapping(value = "/report_csv", produces = "text/csv")
     public byte[] reportCSV(Model model, HttpServletResponse response) {
-    	response.addHeader("Content-Disposition", "attachment; filename=report.csv");
-    	return reportService.generateReportCSV(clientService.getPages());
+        response.addHeader("Content-Disposition", "attachment; filename=report.csv");
+        return reportService.generateReportCSV(clientService.getPages());
     }
 
     private boolean isOperator() {
@@ -94,20 +94,20 @@ public class MainController {
         }
         return false;
     }
-    
+
     @ResponseBody
-    @PostMapping(value="/smscode", produces= MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value = "/smscode", produces = MediaType.TEXT_PLAIN_VALUE)
     public String smscode(@ModelAttribute UserDto userDto) {
         User user = userService.getUserByName(userDto.getName());
-    	
-    	if (user == null || !bCryptPasswordEncoder.matches(userDto.getPassword(), user.getPassword())) {
-    		return "Bad login/password";
-    	}
 
-    	String code = smsService.generateCode();
-    	user.setCode(code);
-    	userService.saveUser(user);
-    	
-    	return smsService.sendSms(user.getMobileNo(), code);
-    }   
+        if (user == null || !bCryptPasswordEncoder.matches(userDto.getPassword(), user.getPassword())) {
+            return "Bad login/password";
+        }
+
+        String code = smsService.generateCode();
+        user.setCode(code);
+        userService.saveUser(user);
+
+        return smsService.sendSms(user.getMobileNo(), code);
+    }
 }

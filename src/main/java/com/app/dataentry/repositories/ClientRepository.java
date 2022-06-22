@@ -10,8 +10,12 @@ import com.app.dataentry.model.Client;
 public interface ClientRepository extends PagingAndSortingRepository<Client, Long> {
 
 	List<Client> findAll();
+
 	List<Client> findAllByProduct(String product);
+
 	Long countByCreatedBy(String username);
+
 	Long countByCreatedByAndProduct(String username, String product);
+
 	List<Client> findAllByCreatedBy(String username);
 }

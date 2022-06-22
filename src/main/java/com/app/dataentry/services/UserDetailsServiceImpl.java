@@ -23,12 +23,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+
 		// hak to have username:code
 		String[] split = username.split(":");
 		String name = "";
-		String code= "";
-		if (split.length  == 1) {
+		String code = "";
+		if (split.length == 1) {
 			name = split[0];
 		} else if (split.length == 2) {
 			name = split[0];
