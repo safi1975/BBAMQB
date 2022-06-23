@@ -13,7 +13,7 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	public String sendSms(String phone, String code) {
 		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=BBAMQB&mobile[]="
-				+ phone + "&message[]=Your OTP to login is " + code + "-BBAMQB&templateid=1207162306397172384";
+				+ phone + "&message[]=Your OTP to login is " + code + "-NUVANTECH&templateid=1207165597510893709";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		if (response.getBody().contains("msgid")) {
@@ -29,7 +29,7 @@ public class SmsServiceImpl implements SmsService {
 
 		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=BBAMQB&mobile[]="
 				+ phone + "&message[]=User " + operatorName
-				+ " has logged into the Portal - BBAMQB&templateid=1207162417108069794";
+				+ " has logged into the Portal. - NUVANTECH&templateid=1207165597506529864";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
@@ -38,9 +38,8 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	@Async
 	public void sendClientRecordAddedSMS(String phone) {
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=BBAMQB&mobile[]="
-				+ phone
-				+ "&message[]=Aapke Hisse ki Qurbani humare pass darj ho gayi hai - BBAMQB&templateid=1207162417094736115";
+		String url = "http://sms.studyleagueitsolutions.com/app/smsapi/index.php?key=46267AE827EDC7&campaign=13263&routeid=7&type=text&contacts="
+			+ phone +"&senderid=BAZMEB&msg=Aapke Hisse ki Qurbani humare pass darj ho gayi hai from BAZMEB (BBAMQB)&template_id=1707165089316074752&pe_id=1701165054053082556";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
