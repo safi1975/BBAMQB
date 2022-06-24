@@ -38,8 +38,8 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	@Async
 	public void sendClientRecordAddedSMS(String phone) {
-		String url = "http://sms.studyleagueitsolutions.com/app/smsapi/index.php?key=46267AE827EDC7&campaign=13263&routeid=7&type=text&contacts="
-			+ phone + "&senderid=BAZMEB&msg=Aapke Hisse ki Qurbani humare pass darj ho gayi hai from BAZMEB (BBAMQB)&template_id=1707165089316074752&pe_id=1701165054053082556";
+		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=BBAMQB&mobile[]="
+			+ phone + "&message[]=Your Name has been entered in our Database BBAMQB - NUVANTECH&templateid=1207165600266184044";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
