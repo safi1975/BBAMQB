@@ -12,8 +12,8 @@ public class SmsServiceImpl implements SmsService {
 
 	@Override
 	public String sendSms(String phone, String code) {
-		String url = "https://demo.digitalsms.biz/api/?apikey=fd5585a5b7be884960fdcbb936917ebb&mobile="
-				+ phone + "&msg=Your OTP to login is " + code + "-NUVANTECH";
+		String url = "https://demo.digitalsms.biz/api/?apikey=2e14610766c9e30a455142acb0e1a11b&mobile=9028353347"
+				+ phone + "&msg=Your OTP to login is " + code + "-BBAMQB";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		if (response.getBody().contains("msgid")) {
@@ -27,9 +27,9 @@ public class SmsServiceImpl implements SmsService {
 	@Async
 	public void sendOperatorLoggedInSMS(String phone, String operatorName) {
 
-		String url = "https://demo.digitalsms.biz/api/?apikey=fd5585a5b7be884960fdcbb936917ebb&mobile="
+		String url = "https://demo.digitalsms.biz/api/?apikey=2e14610766c9e30a455142acb0e1a11b&mobile=9028353347"
 				+ phone + "&message=User " + operatorName
-				+ " has logged into the Portal. - NUVANTECH";
+				+ " has logged into the Portal. - BBAMQB";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
@@ -38,8 +38,8 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	@Async
 	public void sendClientRecordAddedSMS(String phone) {
-		String url = "https://demo.digitalsms.biz/api/?apikey=fd5585a5b7be884960fdcbb936917ebb&mobile="
-			+ phone + "&message=Your Name has been entered in our Database BBAMQB - NUVANTECH";
+		String url = "https://demo.digitalsms.biz/api/?apikey=2e14610766c9e30a455142acb0e1a11b&mobile=9028353347"
+			+ phone + "&message=Your Name has been entered in our Database BBAMQB";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
