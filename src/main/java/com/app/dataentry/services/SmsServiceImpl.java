@@ -12,8 +12,8 @@ public class SmsServiceImpl implements SmsService {
 
 	@Override
 	public String sendSms(String phone, String code) {
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=BBAMQB&mobile[]="
-				+ phone + "&message[]=Your OTP to login is " + code + "-NUVANTECH&templateid=1207165597510893709";
+		String url = "https://demo.digitalsms.biz/api/?apikey=fd5585a5b7be884960fdcbb936917ebb&mobile="
+				+ phone + "&msg=Your OTP to login is " + code + "-NUVANTECH";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		if (response.getBody().contains("msgid")) {
@@ -27,9 +27,9 @@ public class SmsServiceImpl implements SmsService {
 	@Async
 	public void sendOperatorLoggedInSMS(String phone, String operatorName) {
 
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=BBAMQB&mobile[]="
-				+ phone + "&message[]=User " + operatorName
-				+ " has logged into the Portal. - NUVANTECH&templateid=1207165597506529864";
+		String url = "https://demo.digitalsms.biz/api/?apikey=fd5585a5b7be884960fdcbb936917ebb&mobile="
+				+ phone + "&message=User " + operatorName
+				+ " has logged into the Portal. - NUVANTECH";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
@@ -38,8 +38,8 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	@Async
 	public void sendClientRecordAddedSMS(String phone) {
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=BBAMQB&mobile[]="
-			+ phone + "&message[]=Your Name has been entered in our Database BBAMQB - NUVANTECH&templateid=1207165600266184044";
+		String url = "https://demo.digitalsms.biz/api/?apikey=fd5585a5b7be884960fdcbb936917ebb&mobile="
+			+ phone + "&message=Your Name has been entered in our Database BBAMQB - NUVANTECH";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
