@@ -16,11 +16,7 @@ public class SmsServiceImpl implements SmsService {
 				+ phone + "&msg=Your OTP to login is " + code + "-BBAMQB";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-		if (response.getBody().contains("msgid")) {
-			return "Code sent to: " + phone;
-		} else {
-			return "Could not send code";
-		}
+		return "Code sent to: " + phone;
 	}
 
 	@Override
