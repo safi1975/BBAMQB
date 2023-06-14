@@ -1,6 +1,7 @@
 package com.app.dataentry.services;
 
 import java.util.Random;
+import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
@@ -15,7 +16,7 @@ public class SmsServiceImpl implements SmsService {
 		String url = "https://demo.digitalsms.biz/api/?apikey=2e14610766c9e30a455142acb0e1a11b&mobile="
 				+ phone + "&msg=Your OTP to login is " + code + "-BBAMQB";
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+		ResponseEntity<String> response = restTemplate.getForEntity(URI.create(url), String.class);
 		return "Code sent to: " + phone;
 	}
 
@@ -28,7 +29,7 @@ public class SmsServiceImpl implements SmsService {
 				+ " has logged into the Portal. BBAMQB";
 
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getForEntity(url, String.class);
+		restTemplate.getForEntity(URI.create(url), String.class);
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class SmsServiceImpl implements SmsService {
 			+ phone + "&msg=Your Name has been entered in our Database. BBAMQB";
 
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getForEntity(url, String.class);
+		restTemplate.getForEntity(URI.create(url), String.class);
 	}
 
 	@Override
