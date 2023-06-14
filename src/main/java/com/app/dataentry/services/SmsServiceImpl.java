@@ -24,8 +24,8 @@ public class SmsServiceImpl implements SmsService {
 	public void sendOperatorLoggedInSMS(String phone, String operatorName) {
 
 		String url = "https://demo.digitalsms.biz/api/?apikey=2e14610766c9e30a455142acb0e1a11b&mobile="
-				+ phone + "&msg=User%20" + operatorName
-				+ "%20has%20logged%20into%20the%20Portal.%20BBAMQB";
+				+ phone + "&msg=User " + operatorName
+				+ " has logged into the Portal. BBAMQB";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
@@ -35,7 +35,7 @@ public class SmsServiceImpl implements SmsService {
 	@Async
 	public void sendClientRecordAddedSMS(String phone) {
 		String url = "https://demo.digitalsms.biz/api/?apikey=2e14610766c9e30a455142acb0e1a11b&mobile="
-			+ phone + "&msg=Your%20Name%20has%20been%20entered%20in%20our%20Database.%20BBAMQB";
+			+ phone + "&msg=Your Name has been entered in our Database. BBAMQB";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
