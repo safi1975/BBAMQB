@@ -13,7 +13,7 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	public String sendSms(String phone, String code) {
 		String url = "https://demo.digitalsms.biz/api/?apikey=2e14610766c9e30a455142acb0e1a11b&mobile="
-				+ phone + "&msg=Your%20OTP%20to%20login%20is%20" + code + "-BBAMQB";
+				+ phone + "&msg=Your OTP to login is " + code + "-BBAMQB";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		return "Code sent to: " + phone;
