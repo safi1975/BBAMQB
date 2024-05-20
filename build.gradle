@@ -33,26 +33,26 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity4")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     
 
-    compile("org.hibernate:hibernate-c3p0:5.3.7.Final")
-    compile("com.h2database:h2")
-    compile ('org.postgresql:postgresql:42.2.1')
+    implementation("org.hibernate:hibernate-c3p0:5.3.7.Final")
+    implementation("com.h2database:h2")
+    implementation ('org.postgresql:postgresql:42.2.1')
     
-    compile("net.sf.jasperreports:jasperreports:6.9.0")
-    compile("org.apache.commons:commons-csv:1.4")
+    implementation("net.sf.jasperreports:jasperreports:6.9.0")
+    implementation("org.apache.commons:commons-csv:1.4")
     
     // tag::actuator[]
-    compile("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
     // tag::tests[]
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile("org.springframework.security:spring-security-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
     // end::tests[]
 }
 
