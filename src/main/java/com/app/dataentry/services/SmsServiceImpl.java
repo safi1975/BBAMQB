@@ -12,8 +12,8 @@ public class SmsServiceImpl implements SmsService {
 
 	@Override
 	public String sendSms(String phone, String code) {
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=NUVANT&mobile=" +
-			 phone + "&msg=Your OTP to login to Data Entry Portal is + code +. NUVANTECH&templateid=1707171568555983022";
+		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=NUVANT&mobile[]=" +
+			 phone + "&message[]=Your OTP to login to Data Entry Portal is + code +. NUVANTECH&templateid=1707171568555983022";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		return "Code sent to: " + phone;
@@ -23,8 +23,8 @@ public class SmsServiceImpl implements SmsService {
 	@Async
 	public void sendOperatorLoggedInSMS(String phone, String operatorName) {
 
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=NUVANT&mobile="
-			+ phone + " &msg=User + operatorName + has logged into the Data Entry portal. NUVANTECH&templateid=1707171568566975291";
+		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=NUVANT&mobile[]="
+			+ phone + " &message[]=User + operatorName + has logged into the Data Entry portal. NUVANTECH&templateid=1707171568566975291";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
@@ -33,8 +33,8 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	@Async
 	public void sendClientRecordAddedSMS(String phone) {
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=NUVANT&mobile="
-			+ phone + "&msg=Your Name has been entered in our Database BBAMQB - NUVANTECH&templateid=1707171569763280386";
+		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=NUVANT&mobile[]="
+			+ phone + "&message[]=Your Name has been entered in our Database BBAMQB - NUVANTECH&templateid=1707171569763280386";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
