@@ -3,6 +3,7 @@ package com.app.dataentry.services;
 import com.app.dataentry.domain.UserDto;
 import com.app.dataentry.model.User;
 import com.app.dataentry.repositories.UserRepository;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.core.session.SessionRegistry;
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Lazy
     @Autowired
     private SessionRegistry sessionRegistry;
 
