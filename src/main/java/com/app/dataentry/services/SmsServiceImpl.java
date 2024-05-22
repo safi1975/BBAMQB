@@ -24,7 +24,7 @@ public class SmsServiceImpl implements SmsService {
 	public void sendOperatorLoggedInSMS(String phone, String operatorName) {
 
 		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=NUVANT&mobile[]="
-			+ phone + " &message[]=User + operatorName + has logged into the Data Entry portal. NUVANTECH&templateid=1707171568566975291";
+			+ phone + " &message[]=User "+ operatorName +" has logged into the Data Entry portal. NUVANTECH&templateid=1707171568566975291";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
