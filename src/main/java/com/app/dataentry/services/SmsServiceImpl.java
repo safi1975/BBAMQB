@@ -22,8 +22,7 @@ public class SmsServiceImpl implements SmsService {
 	@Async
 	public void sendOperatorLoggedInSMS(String phone, String operatorName) {
 
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=NUVANT&mobile[]="
-			+ phone + " &message[]=User "+ operatorName +" has logged into the Data Entry portal. NUVANTECH&templateid=1707171568566975291";
+		String url = "https://api.aoc-portal.com/v1/sms?apikey=sTaSeMhUPBVBfCmjfKbjZ5o6IuDD4P&type=TRANS&text=User "+ operatorName +" has logged into the Data Entry portal. NUVANTECH&to=" + phone + "&sender=NUVANT";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
