@@ -31,8 +31,7 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	@Async
 	public void sendClientRecordAddedSMS(String phone) {
-		String url = "http://vas.mobilogi.com/api.php?username=bbamqb&password=D4rkh0lme&route=1&sender=NUVANT&mobile[]="
-			+ phone + "&message[]=Your Name has been entered in our Database BBAMQB - NUVANTECH&templateid=1707171569763280386";
+		String url = "https://api.aoc-portal.com/v1/sms?apikey=sTaSeMhUPBVBfCmjfKbjZ5o6IuDD4P&type=TRANS&text=Your Name has been entered in our Database BBAMQB - NUVANTECH&to=" + phone + "&sender=NUVANT";
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForEntity(url, String.class);
