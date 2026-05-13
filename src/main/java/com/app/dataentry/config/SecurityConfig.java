@@ -1,92 +1,85 @@
 package com.app.dataentry.config;
 
+import com.app.dataentry.handlers.LoginHandler;
+import com.app.dataentry.handlers.LogoutHandler;
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import com.app.dataentry.handlers.LogoutHandler;
-import com.app.dataentry.handlers.LoginHandler;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableMethodSecurity(securedEnabled = true)
+public class SecurityConfig {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+  @Autowired private UserDetailsService userDetailsService;
 
-    @Autowired
-    private LogoutHandler logoutHandler;
+  @Autowired private LogoutHandler logoutHandler;
 
-    @Autowired
-    private LoginHandler loginHandler;
+  @Autowired private LoginHandler loginHandler;
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+  @Autowired private SessionRegistry sessionRegistry;
 
-    @Bean
-    public AuthenticationManager customAuthenticationManager() throws Exception {
-        return authenticationManager();
-    }
+  @Autowired private BCryptPasswordEncoder bcryptPasswordEncoder;
 
-    @Bean
-    public SessionRegistry sessionRegistry() {
-        return new SessionRegistryImpl();
-    }
+  @Bean
+  public AuthenticationManager
+  customAuthenticationManager(AuthenticationConfiguration authConfig)
+      throws Exception {
+    return authConfig.getAuthenticationManager();
+  }
 
-    @Autowired
-    DataSource dataSource;
+  @Autowired
+  public void configureGlobal(AuthenticationManagerBuilder auth)
+      throws Exception {
+    auth.userDetailsService(userDetailsService)
+        .passwordEncoder(bcryptPasswordEncoder);
+  }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers(
-                        "/js/**",
-                        "/css/**",
-                        "/img/**",
-                        "/webjars/**")
-                .permitAll()
-                .antMatchers(HttpMethod.POST, "/smscode").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .successHandler(loginHandler)
-                .failureUrl("/login?error=true")
-                .permitAll()
-                .and()
-                .logout().clearAuthentication(true)
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .logoutSuccessHandler(logoutHandler)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")
-                .permitAll()
-                .and()
-                .userDetailsService(userDetailsService)
-                .sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry());
-    }
+  @Bean
+  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    return http
+        .authorizeHttpRequests(
+            auth
+            -> auth.requestMatchers("/js/**", "/css/**", "/img/**",
+                                    "/webjars/**")
+                   .permitAll()
+                   .requestMatchers(HttpMethod.POST, "/smscode")
+                   .permitAll()
+                   .anyRequest()
+                   .authenticated())
+        .formLogin(form
+                   -> form.loginPage("/login")
+                          .defaultSuccessUrl("/")
+                          .successHandler(loginHandler)
+                          .failureUrl("/login?error=true")
+                          .permitAll())
+        .logout(logout
+                -> logout.clearAuthentication(true)
+                       .invalidateHttpSession(true)
+                       .logoutSuccessHandler(logoutHandler)
+                       .logoutRequestMatcher(
+                           PathPatternRequestMatcher.withDefaults().matcher(
+                               "/logout"))
+                       .logoutSuccessUrl("/login")
+                       .permitAll())
+        .sessionManagement(session
+                           -> session.maximumSessions(1)
+                                  .maxSessionsPreventsLogin(true)
+                                  .sessionRegistry(sessionRegistry))
+        .userDetailsService(userDetailsService)
+        .build();
+  }
 }
