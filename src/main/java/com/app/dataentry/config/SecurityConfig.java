@@ -75,9 +75,10 @@ public class SecurityConfig {
                                "/logout"))
                        .logoutSuccessUrl("/login")
                        .permitAll())
-        .sessionManagement(
-            session
-            -> session.maximumSessions(1).sessionRegistry(sessionRegistry))
+        .sessionManagement(session
+                           -> session.maximumSessions(1)
+                                  .maxSessionsPreventsLogin(true)
+                                  .sessionRegistry(sessionRegistry))
         .userDetailsService(userDetailsService)
         .build();
   }
